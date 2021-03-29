@@ -327,6 +327,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\BaseClass.cs" />
+    <Compile Include="DAL\Gateway\UserListGateway.cs" />
+    <Compile Include="DAL\Model\UserListModel.cs" />
     <Compile Include="log-in.aspx.cs">
       <DependentUpon>log-in.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -357,7 +359,9 @@
       <DependentUpon>root.Master</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Photos\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

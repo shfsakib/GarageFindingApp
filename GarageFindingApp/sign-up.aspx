@@ -89,7 +89,7 @@
                         </div>
                     </asp:Panel>
                     <div class="input-group mb-3">
-                        <asp:DropDownList ID="ddlDistrict" class="form-control select2" Style="border-right: 1px solid gainsboro" runat="server">
+                        <asp:DropDownList ID="ddlDistrict" class="form-control select2" AutoPostBack="True" OnSelectedIndexChanged="ddlDistrict_OnSelectedIndexChanged" Style="border-right: 1px solid gainsboro" runat="server">
                             <asp:ListItem>--DISTRICT--</asp:ListItem>
                         </asp:DropDownList>
                     </div>
@@ -152,6 +152,8 @@
     <script src="/Link/log-in/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="/Link/log-in/dist/js/adminlte.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
     <link href="/Link/select2.css" rel="stylesheet" />
@@ -162,8 +164,7 @@
             });
         });
     </script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
     <link href="Link/Date-Picker.css" rel="stylesheet" />
     <script>
         function ImagePreview(input) {
@@ -194,7 +195,7 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#txtConfirmPass').keyup(function() {
+            $('#txtConfirmPass').keyup(function () {
                 var pass = $('#txtNewPass').val();
                 var cPass = $('#txtConfirmPass').val();
                 $('#lblMsg').fadeIn();
@@ -202,13 +203,13 @@
                 if (pass !== cPass) {
                     $('#lblMsg').text('Password missmatch ✖');
                     $('#lblMsg').css('color', 'red');
-                    setTimeout(function() {
+                    setTimeout(function () {
                         $('#lblMsg').fadeOut(600);
                     }, 2000);
                 } else {
                     $('#lblMsg').text('Password missmatch ✔');
                     $('#lblMsg').css('color', 'green');
-                    setTimeout(function() {
+                    setTimeout(function () {
                         $('#lblMsg').fadeOut(600);
                     }, 2000);
                 }
