@@ -93,12 +93,18 @@
                             <asp:ListItem>--DISTRICT--</asp:ListItem>
                         </asp:DropDownList>
                     </div>
-                    <div class="input-group mb-3">
-                        <asp:DropDownList ID="ddlLocation" class="form-control select2" Style="border-right: 1px solid gainsboro" runat="server">
-                            <asp:ListItem>--LOCATION--</asp:ListItem>
+                     <div class="input-group mb-3">
+                        <asp:DropDownList ID="ddlThana" AutoPostBack="True" OnSelectedIndexChanged="ddlThana_OnSelectedIndexChanged" class="form-control select2" Style="border-right: 1px solid gainsboro" runat="server">
+                            <asp:ListItem>--Thana--</asp:ListItem>
                         </asp:DropDownList>
                     </div>
                     <div class="input-group mb-3">
+                        <asp:DropDownList ID="ddlLocation" class="form-control select2" Style="border-right: 1px solid gainsboro" runat="server">
+                            <asp:ListItem>--LOCATION--</asp:ListItem>
+                            <asp:ListItem Value="1">Bohadder Hat</asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+                   <div class="input-group mb-3">
                         <asp:TextBox ID="txtAddress" CssClass="form-control" Height="80px" TextMode="MultiLine" runat="server" Style="border-right: 1px solid gainsboro" placeholder="Address"></asp:TextBox>
                         <div class="input-group-append">
                             <div class="input-group-text p-0">
@@ -112,8 +118,9 @@
                                 <span class="fas fa-lock"></span>
                             </div>
                         </div>
-                    </div>
-
+                    </div>  
+                    <asp:TextBox ID="lat" runat="server" style="display: none;"></asp:TextBox>
+                    <asp:TextBox ID="longL" runat="server" style="display: none;"></asp:TextBox>
                     <div class="input-group mb-3">
                         <input type="password" runat="server" autocomplete="off" id="txtConfirmPass" class="form-control" placeholder="Retype password" />
                         <div class="input-group-append">
@@ -152,6 +159,7 @@
     <script src="/Link/log-in/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="/Link/log-in/dist/js/adminlte.min.js"></script>
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
@@ -174,24 +182,24 @@
                     $('#<%=imgUser.ClientID%>').prop('src', e.target.result);
                 };
                 reader.readAsDataURL(input.files[0]);
-                }
             }
-            $(document).ready(function () {
-                $("#txtDob").datepicker({
-                    changeMonth: true,
-                    changeYear: true,
-                    dateFormat: 'dd/mm/yy',
-                    yearRange: '1901:2099'
-                });
+        }
+        $(document).ready(function () {
+            $("#txtDob").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd/mm/yy',
+                yearRange: '1901:2099'
             });
-            function pageLoad() {
-                $("#txtDob").datepicker({
-                    changeMonth: true,
-                    changeYear: true,
-                    dateFormat: 'dd/mm/yy',
-                    yearRange: '1901:2099'
-                });
-            };
+        });
+        function pageLoad() {
+            $("#txtDob").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd/mm/yy',
+                yearRange: '1901:2099'
+            });
+        };
     </script>
     <script type="text/javascript">
         $(document).ready(function () {
@@ -214,7 +222,32 @@
                     }, 2000);
                 }
             });
-        })
+        });
+       
+    </script>
+   
+    <script>
+        $(document).ready(function () {
+            // get users lat/long
+            var getPosition = {
+                enableHighAccuracy: false,
+                timeout: 9000,
+                maximumAge: 0
+            };
+            function success(gotPosition) {
+                var uLat = gotPosition.coords.latitude;
+                var uLon = gotPosition.coords.longitude;
+                //$('#lat').text(uLat);
+                //$('#longL').text(uLon);
+                $('#lat').val(uLat);
+                $('#longL').val(uLon);
+                ////$('#NavBar_MapTypeText').innerHTML = "Aerial";
+            };
+            function error(err) {
+                console.warn(`ERROR(${err.code}): ${err.message}`);
+            };
+            navigator.geolocation.getCurrentPosition(success, error, getPosition);
+        });
     </script>
 </body>
 </html>

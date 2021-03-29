@@ -48,6 +48,26 @@ namespace GarageFindingApp
             }
         }
 
+        private bool IsEmailExist()
+        {
+            bool ans = false;
+            string x = baseClass.IsExist($"SELECT Email FROM UserList WHERE Email='{txtEmail.Value}'");
+            if (x!="")
+            {
+                ans = true;
+            }
+            return ans;
+        }
+        private bool IsMobileExist()
+        {
+            bool ans = false;
+            string x = baseClass.IsExist($"SELECT MobileNo FROM UserList WHERE MobileNo='{txtMobile.Value}'");
+            if (x != "")
+            {
+                ans = true;
+            }
+            return ans;
+        }
         protected void OnServerClick(object sender, EventArgs e)
         {
             try
@@ -65,6 +85,13 @@ namespace GarageFindingApp
                 {
                     baseClass.PopAlert(this, "Enter valid email");
                 }
+                else if (IsEmailExist())
+                {
+                    baseClass.PopAlert(this, "Email already exist");
+                }else if (IsMobileExist())
+                {
+                    baseClass.PopAlert(this, "Mobile no already exist");
+                }
                 else if (txtMobile.Value == "")
                 {
                     baseClass.PopAlert(this, "Mobile no is required");
@@ -81,10 +108,14 @@ namespace GarageFindingApp
                     baseClass.PopAlert(this, "District is required");
 
                 }
+                else if (ddlThana.SelectedItem.ToString() == "--THANA--")
+                {
+                    baseClass.PopAlert(this, "Thana is required");
+
+                }
                 else if (ddlLocation.SelectedItem.ToString() == "--LOCATION--")
                 {
                     baseClass.PopAlert(this, "Location is required");
-
                 }
                 else if (txtAddress.Text == "")
                 {
@@ -148,9 +179,12 @@ namespace GarageFindingApp
             userListModel.Dob = txtDob.Value;
             userListModel.GarageName = txtGarageName.Value;
             userListModel.District = Convert.ToInt32(ddlDistrict.SelectedValue);
+            userListModel.Thana = Convert.ToInt32(ddlThana.SelectedValue);
             userListModel.Location = Convert.ToInt32(ddlLocation.SelectedValue);
             userListModel.Address = txtAddress.Text;
             userListModel.Password = txtNewPass.Value;
+            userListModel.Lat = lat.Text;
+            userListModel.Long = longL.Text;
             if (fileImage.HasFile)
             {
                 string imagePath = Server.MapPath("/Photos/") + userListModel.UserId + ".png";
@@ -182,6 +216,7 @@ namespace GarageFindingApp
                     baseClass.PopAlert(this, "Registered Successful, Wait for admin approval");
 
                 }
+                Refresh();
             }
             else
             {
@@ -193,11 +228,16 @@ namespace GarageFindingApp
         private void Refresh()
         {
             txtName.Value = txtEmail.Value = txtMobile.Value = txtDob.Value = txtGarageName.Value = txtAddress.Text = "";
-            ddltype.SelectedIndex = ddlDistrict.SelectedIndex = ddlGender.SelectedIndex = ddlLocation.SelectedIndex = -1;
+            ddltype.SelectedIndex = ddlDistrict.SelectedIndex = ddlThana.SelectedIndex = ddlGender.SelectedIndex = ddlLocation.SelectedIndex = -1;
         }
         protected void ddlDistrict_OnSelectedIndexChanged(object sender, EventArgs e)
         {
-            baseClass.BindDropDown(ddlLocation, "Location", $"SELECT Thana NAME, Id FROM upazila WHERE DistrictId='{ddlDistrict.SelectedValue}' ORDER BY NAME ASC");
+            baseClass.BindDropDown(ddlThana, "Thana", $"SELECT Thana NAME, Id FROM upazila WHERE DistrictId='{ddlDistrict.SelectedValue}' ORDER BY NAME ASC");
+            ddlThana.Focus();
+        }
+
+        protected void ddlThana_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
             ddlLocation.Focus();
         }
     }

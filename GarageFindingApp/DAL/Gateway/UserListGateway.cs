@@ -37,7 +37,7 @@ namespace GarageFindingApp.DAL.Gateway
                 if (con.State != ConnectionState.Open)
                     con.Open();
                 transaction = con.BeginTransaction();
-                cmd = new SqlCommand("INSERT INTO UserList(UserId,Name,Email,MobileNo,UserType,Gender,Dob,GarageName,District,Location,Address,Password,Picture,Status,Intime) VALUES(@UserId,@Name,@Email,@MobileNo,@UserType,@Gender,@Dob,@GarageName,@District,@Location,@Address,@Password,@Picture,@Status,@Intime)", con);
+                cmd = new SqlCommand("INSERT INTO UserList(UserId,Name,Email,MobileNo,UserType,Gender,Dob,GarageName,District,Thana,Location,Address,Password,Picture,Status,Intime,Lat,Long) VALUES(@UserId,@Name,@Email,@MobileNo,@UserType,@Gender,@Dob,@GarageName,@District,@Thana,@Location,@Address,@Password,@Picture,@Status,@Intime,@Lat,@Long)", con);
                 cmd.Parameters.AddWithValue("@UserId", ob.UserId);
                 cmd.Parameters.AddWithValue("@Name", ob.Name);
                 cmd.Parameters.AddWithValue("@Email", ob.Email);
@@ -47,12 +47,15 @@ namespace GarageFindingApp.DAL.Gateway
                 cmd.Parameters.AddWithValue("@Dob", ob.Dob);
                 cmd.Parameters.AddWithValue("@GarageName", ob.GarageName);
                 cmd.Parameters.AddWithValue("@District", ob.District);
+                cmd.Parameters.AddWithValue("@Thana", ob.Thana);
                 cmd.Parameters.AddWithValue("@Location", ob.Location);
                 cmd.Parameters.AddWithValue("@Address", ob.Address);
                 cmd.Parameters.AddWithValue("@Password", ob.Password);
                 cmd.Parameters.AddWithValue("@Picture", ob.Picture);
                 cmd.Parameters.AddWithValue("@Status", ob.Status);
                 cmd.Parameters.AddWithValue("@Intime", ob.Intime);
+                cmd.Parameters.AddWithValue("@Lat", ob.Lat);
+                cmd.Parameters.AddWithValue("@Long", ob.Long);
 
                 cmd.Transaction = transaction;
                 cmd.ExecuteNonQuery();

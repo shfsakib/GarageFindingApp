@@ -103,6 +103,15 @@ namespace GarageFindingApp {
         protected global::System.Web.UI.WebControls.DropDownList ddlDistrict;
         
         /// <summary>
+        /// ddlThana control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlThana;
+        
+        /// <summary>
         /// ddlLocation control.
         /// </summary>
         /// <remarks>
@@ -128,6 +137,24 @@ namespace GarageFindingApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputPassword txtNewPass;
+        
+        /// <summary>
+        /// lat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox lat;
+        
+        /// <summary>
+        /// longL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox longL;
         
         /// <summary>
         /// txtConfirmPass control.
