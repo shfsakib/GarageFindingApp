@@ -70,5 +70,31 @@ namespace GarageFindingApp.DAL.Gateway
             }
             return result;
         }
+        internal bool UpdateStatus(UserListModel ob)
+        {
+            bool result = false;
+            SqlTransaction transaction = null;
+            try
+            {
+                if (con.State != ConnectionState.Open)
+                    con.Open();
+                transaction = con.BeginTransaction();
+                cmd = new SqlCommand("UPDATE UserList SET Status=@Status WHERE UserId=@UserId", con);
+                cmd.Parameters.AddWithValue("@Status", ob.Status);
+                cmd.Parameters.AddWithValue("@UserId", ob.UserId);
+
+                cmd.Transaction = transaction;
+                cmd.ExecuteNonQuery();
+                transaction.Commit();
+                result = true;
+                if (con.State != ConnectionState.Closed)
+                    con.Close();
+            }
+            catch (Exception)
+            {
+                transaction.Rollback();
+            }
+            return result;
+        }
     }
 }

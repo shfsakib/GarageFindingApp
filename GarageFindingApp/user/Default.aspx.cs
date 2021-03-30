@@ -4,14 +4,91 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using GarageFindingApp.DAL;
+using GarageFindingApp.DAL.Gateway;
+using GarageFindingApp.DAL.Model;
 
 namespace GarageFindingApp.user
 {
     public partial class Default : System.Web.UI.Page
     {
+        private BaseClass baseClass;
+        private UserListModel userListModel;
+        private UserListGateway userListGateway;
+        public Default()
+        {
+            baseClass = BaseClass.GetInstance();
+            userListModel = UserListModel.GetInstance();
+            userListGateway = UserListGateway.GetInstance();
+        }
         protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                Load();
+            }
+        }
+
+        private void Load()
+        {
+            string query =
+                @"SELECT        UserList.UserId, UserList.Name, UserList.Email, UserList.MobileNo, UserList.UserType, UserList.Gender, UserList.Dob, UserList.GarageName, UserList.District DistrictId, UserList.Thana ThanaId, UserList.Location LocationId, UserList.Address, 
+                         UserList.Password, UserList.Picture, UserList.Status, UserList.Intime, UserList.Lat, UserList.Long, (SELECT SUM(Rating.Rate)/COUNT(Rating.Rate) FROM Rating WHERE Rating.GarageId=UserList.UserId) AS Rate, Upazila.Thana AS Thana, Location.LocationName, District.District AS DistrictName
+FROM           UserList  INNER JOIN
+                         Upazila ON UserList.Thana = Upazila.Id INNER JOIN
+                         District ON UserList.District= District.Id  LEFT JOIN
+                         Rating ON Rating.GarageId = UserList.UserId INNER JOIN
+                        Location ON Location.Id = UserList.Location WHERE UserList.UserType='Garage' AND UserList.Status='A' ORDER BY Rate ASC";
+            baseClass.LoadGrid(gridGarage, query);
+        }
+        protected void gridGarage_OnPageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gridGarage.PageIndex = e.NewPageIndex;
+            Load();
+        }
+        public string Star(string rate)
+        {
+            if (rate == "" || rate == "5")
+            {
+                rate = "⭐⭐⭐⭐⭐";
+            }
+            else if (rate == "4")
+            {
+                rate = "⭐⭐⭐⭐";
+            }
+            else if (rate == "3")
+            {
+                rate = "⭐⭐⭐";
+            }
+            else if (rate == "2")
+            {
+                rate = "⭐⭐";
+            }
+            else if (rate == "1")
+            {
+                rate = "⭐";
+            }
+            return rate;
+        }
+
+        protected void lnkBook_OnClick(object sender, EventArgs e)
         {
 
         }
+
+        protected void lnkRating_OnClick(object sender, EventArgs e)
+        {
+            LinkButton lnkRate = (LinkButton)sender;
+            HiddenField userId = (HiddenField)lnkRate.Parent.FindControl("userId");   
+            if (baseClass.UserIdCookie() == null)
+            {
+                baseClass.PopAlert(this, "You must log in first to submit review"); 
+            }
+            else
+            {
+                Response.Redirect("/user/rate-garage.aspx?id=" + userId.Value + "");
+                   }
+        }
+
     }
 }

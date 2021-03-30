@@ -96,3 +96,4 @@ D:\Git\GarageFindingApp\GarageFindingApp\bin\Microsoft.ApplicationInsights.xml
 D:\Git\GarageFindingApp\GarageFindingApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\Git\GarageFindingApp\GarageFindingApp\obj\Debug\GarageFindingApp.dll
 D:\Git\GarageFindingApp\GarageFindingApp\obj\Debug\GarageFindingApp.pdb
+D:\Git\GarageFindingApp\GarageFindingApp\obj\Debug\GarageFindingApp.csprojResolveAssemblyReference.cache

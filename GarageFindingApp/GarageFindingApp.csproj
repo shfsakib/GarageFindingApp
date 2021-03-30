@@ -43,6 +43,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=20.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -94,6 +98,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AutoComplete.asmx" />
     <Content Include="Link\Date-Picker.css" />
     <Content Include="Link\dummy.png" />
     <Content Include="Link\garage.png" />
@@ -116,6 +121,17 @@
     <Content Include="Link\bower_components\Ionicons\fonts\ionicons28b5.eot" />
     <Content Include="Link\bower_components\Ionicons\fonts\ionicons28b5.ttf" />
     <Content Include="Link\bower_components\Ionicons\fonts\ionicons28b5.woff" />
+    <Content Include="Rating\FilledStar.gif" />
+    <Content Include="Rating\FilledStar.png" />
+    <Content Include="Rating\Star.gif" />
+    <Content Include="Rating\star.png" />
+    <Content Include="Rating\WaitingStar.gif" />
+    <Content Include="Rating\WaitingStar.png" />
+    <Content Include="user\add-service.aspx" />
+    <Content Include="user\add-location.aspx" />
+    <Content Include="user\customer-list.aspx" />
+    <Content Include="user\garage-list.aspx" />
+    <Content Include="user\rate-garage.aspx" />
     <Content Include="user\root.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -326,8 +342,18 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoComplete.asmx.cs">
+      <DependentUpon>AutoComplete.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DAL\BaseClass.cs" />
+    <Compile Include="DAL\Gateway\LocationGateway.cs" />
+    <Compile Include="DAL\Gateway\RatingGateway.cs" />
+    <Compile Include="DAL\Gateway\ServiceGateway.cs" />
     <Compile Include="DAL\Gateway\UserListGateway.cs" />
+    <Compile Include="DAL\Model\LocationModel.cs" />
+    <Compile Include="DAL\Model\RatingModel.cs" />
+    <Compile Include="DAL\Model\ServiceModel.cs" />
     <Compile Include="DAL\Model\UserListModel.cs" />
     <Compile Include="log-in.aspx.cs">
       <DependentUpon>log-in.aspx</DependentUpon>
@@ -344,12 +370,47 @@
     <Compile Include="sign-up.aspx.designer.cs">
       <DependentUpon>sign-up.aspx</DependentUpon>
     </Compile>
+    <Compile Include="user\add-service.aspx.cs">
+      <DependentUpon>add-service.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\add-service.aspx.designer.cs">
+      <DependentUpon>add-service.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\add-location.aspx.cs">
+      <DependentUpon>add-location.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\add-location.aspx.designer.cs">
+      <DependentUpon>add-location.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\customer-list.aspx.cs">
+      <DependentUpon>customer-list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\customer-list.aspx.designer.cs">
+      <DependentUpon>customer-list.aspx</DependentUpon>
+    </Compile>
     <Compile Include="user\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="user\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\garage-list.aspx.cs">
+      <DependentUpon>garage-list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\garage-list.aspx.designer.cs">
+      <DependentUpon>garage-list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\rate-garage.aspx.cs">
+      <DependentUpon>rate-garage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\rate-garage.aspx.designer.cs">
+      <DependentUpon>rate-garage.aspx</DependentUpon>
     </Compile>
     <Compile Include="user\root.Master.cs">
       <DependentUpon>root.Master</DependentUpon>

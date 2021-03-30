@@ -30,7 +30,7 @@ namespace GarageFindingApp
                 baseClass.BindDropDown(ddlDistrict, "division", "SELECT District NAME, Id FROM District ORDER BY NAME ASC");
             }
         }
-
+       
         protected void ddltype_OnSelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -52,7 +52,7 @@ namespace GarageFindingApp
         {
             bool ans = false;
             string x = baseClass.IsExist($"SELECT Email FROM UserList WHERE Email='{txtEmail.Value}'");
-            if (x!="")
+            if (x != "")
             {
                 ans = true;
             }
@@ -88,7 +88,8 @@ namespace GarageFindingApp
                 else if (IsEmailExist())
                 {
                     baseClass.PopAlert(this, "Email already exist");
-                }else if (IsMobileExist())
+                }
+                else if (IsMobileExist())
                 {
                     baseClass.PopAlert(this, "Mobile no already exist");
                 }
@@ -201,19 +202,39 @@ namespace GarageFindingApp
             }
             else
             {
-                userListModel.Status = "I";
+                userListModel.Status = "P";
             }
             userListModel.Intime = baseClass.Date();
             bool ans = userListGateway.Insert(userListModel);
             if (ans)
             {
+
                 if (ddltype.Text == "Customer")
                 {
-                    baseClass.PopAlert(this, "Registered Successfully ✔");
+                    bool ans1 = baseClass.SendEmail("carservicecenter02@gmail.com", txtEmail.Value, "Registration",
+                    "<h1>Hello User,</h1><br/>Your account has been registered successfully.<br/><b>Thank you</b>",
+                    "carservice12345");
+                    if (ans1)
+                    {
+                        baseClass.PopAlert(this, "Registered Successfully ✔");
+                    }
+                    else
+                    {
+                        baseClass.PopAlert(this, "Registered Successfully ✔");
+                    }
+
                 }
                 else
                 {
-                    baseClass.PopAlert(this, "Registered Successful, Wait for admin approval");
+                    bool ans1 = baseClass.SendEmail("Carservicecenter02@gmail.com", txtEmail.Value, "Registration",
+                    "<h1>Hello User,</h1><br/>Your account has been registered successfully, Please wait for admin approval. We will contact with you soon.<br/><b>Thank you</b>",
+                    "carservice12345");
+                    if (ans1)
+                    {
+                        baseClass.PopAlert(this, "Registered Successful, Wait for admin approval");
+                    }
+                    else
+                        baseClass.PopAlert(this, "Registered Successful, Wait for admin approval");
 
                 }
                 Refresh();
@@ -238,6 +259,7 @@ namespace GarageFindingApp
 
         protected void ddlThana_OnSelectedIndexChanged(object sender, EventArgs e)
         {
+            baseClass.BindDropDown(ddlLocation, "Location", $"SELECT LocationName NAME, Id FROM Location WHERE ThanaId='{ddlThana.SelectedValue}' ORDER BY NAME ASC");
             ddlLocation.Focus();
         }
     }

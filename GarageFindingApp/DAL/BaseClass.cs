@@ -393,6 +393,25 @@ namespace GarageFindingApp.DAL
             }
 
         }
+
+        public static HttpCookie CreateCookie()
+        {
+            HttpCookie cookie = new HttpCookie("GarageInfo");
+            if (cookie==null || cookie?.Value=="")
+            {
+                cookie = null;
+            }
+            return cookie;
+        }
+        public static HttpCookie GetCookie()
+        {
+            HttpCookie cookie = HttpContext.Current.Request.Cookies["GarageInfo"];
+            if (cookie == null || cookie?.Value == "")
+            {
+                cookie = null;
+            }
+            return cookie;
+        }
         public void AdminType(Page page, string type1, string type2)
         {
             HttpCookie cookie = new HttpCookie("GarageInfo");
@@ -436,5 +455,6 @@ namespace GarageFindingApp.DAL
             }
             return id;
         }
+
     }
 }

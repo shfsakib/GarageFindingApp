@@ -29,7 +29,7 @@
 
                 <form runat="server">
                     <div class="input-group mb-3">
-                        <input type="email" runat="server" id="txtEmail" class="form-control" placeholder="Email" />
+                        <input type="email" runat="server" id="txtEmail" autocomplete="off" class="form-control" placeholder="Email" />
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" runat="server" id="txtPass" class="form-control" placeholder="Password" />
+                        <input type="password" runat="server" id="txtPass" autocomplete="off" class="form-control" placeholder="Password" />
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -55,7 +55,7 @@
                     <!-- /.social-auth-links -->
 
                     <p class="mb-1">
-                        <asp:LinkButton ID="lnkForgot" runat="server">I forgot my password</asp:LinkButton>
+                        <asp:LinkButton ID="lnkForgot" runat="server" OnClick="lnkForgot_OnClick">I forgot my password</asp:LinkButton>
                     </p>
                     <p class="mb-0">
                         <a href="sign-up.aspx" class="text-center">Register here</a>
