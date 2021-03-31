@@ -4,10 +4,10 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
-using CateringPlaceBooking.DAL.Model;
 using GarageFindingApp.DAL;
+using GarageFindingApp.DAL.Model;
 
-namespace CateringPlaceBooking.DAL.Gateway
+namespace GarageFindingApp.DAL.Gateway
 {
     public class RatingGateway
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace CateringPlaceBooking.DAL.Model
+namespace GarageFindingApp.DAL.Model
 {
     public class RatingModel
     {

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
-using CateringPlaceBooking.DAL.Gateway;
-using CateringPlaceBooking.DAL.Model;
+using System.Web.UI.WebControls; 
 using GarageFindingApp.DAL;
+using GarageFindingApp.DAL.Gateway;
+using GarageFindingApp.DAL.Model;
 
 namespace GarageFindingApp.user
 {

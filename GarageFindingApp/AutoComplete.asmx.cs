@@ -41,7 +41,7 @@ namespace GarageFindingApp
             try
             {
 
-                string query = @"SELECT Name +' | '+MobileNo txt FROM UserList WHERE Name +' | '+Email +' | '+MobileNo LIKE '" + txt + "%' AND UserType='Customer'";
+                string query = @"SELECT Name +' | '+MobileNo txt FROM UserList WHERE Name +' | '+Email +' | '+MobileNo LIKE '%" + txt + "%' AND UserType='Customer'";
                 using (cmd = new SqlCommand(query, conn))
                 {
                     if (conn.State != System.Data.ConnectionState.Open) conn.Open();
@@ -63,7 +63,7 @@ namespace GarageFindingApp
             try
             {
 
-                string query = @"SELECT Name +' | '+MobileNo txt FROM UserList WHERE Name +' | '+Email +' | '+MobileNo LIKE '" + txt + "%' AND UserType='Garage'";
+                string query = @"SELECT Name +' | '+MobileNo txt FROM UserList WHERE Name +' | '+Email +' | '+MobileNo LIKE '%" + txt + "%' AND UserType='Garage'";
                 using (cmd = new SqlCommand(query, conn))
                 {
                     if (conn.State != System.Data.ConnectionState.Open) conn.Open();
