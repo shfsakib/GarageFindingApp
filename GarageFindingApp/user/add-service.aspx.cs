@@ -69,6 +69,7 @@ namespace GarageFindingApp.user
                     serviceModel.ServiceName = serviceFooterTextBox.Value.Trim();
                     serviceModel.Intime = baseClass.Date();
                     serviceModel.Price = Convert.ToDouble(priceFooterTextBox.Value.Trim());
+                    serviceModel.GarageId = Convert.ToInt32(baseClass.UserIdCookie());
                     bool a = serviceGateway.Insert(serviceModel);
                     if (a)
                     {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using GarageFindingApp.DAL;
 using GarageFindingApp.DAL.Gateway;
@@ -15,6 +16,7 @@ namespace GarageFindingApp.user
         private BaseClass baseClass;
         private UserListModel userListModel;
         private UserListGateway userListGateway;
+        private HttpCookie cookie = BaseClass.GetCookie();
         public Default()
         {
             baseClass = BaseClass.GetInstance();
@@ -26,6 +28,7 @@ namespace GarageFindingApp.user
             if (!IsPostBack)
             {
                 Load();
+                baseClass.BindDropDown(ddlThana, "thana", $"SELECT Thana NAME, Id FROM Upazila ORDER BY Name ASC");
             }
         }
 
@@ -73,22 +76,81 @@ FROM           UserList  INNER JOIN
 
         protected void lnkBook_OnClick(object sender, EventArgs e)
         {
+            if (cookie==null)
+            {
+                baseClass.PopAlert(this,"Please log in first to book service");
+            }
 
         }
 
         protected void lnkRating_OnClick(object sender, EventArgs e)
         {
             LinkButton lnkRate = (LinkButton)sender;
-            HiddenField userId = (HiddenField)lnkRate.Parent.FindControl("userId");   
+            HiddenField userId = (HiddenField)lnkRate.Parent.FindControl("userId");
             if (baseClass.UserIdCookie() == null)
             {
-                baseClass.PopAlert(this, "You must log in first to submit review"); 
+                baseClass.PopAlert(this, "You must log in first to submit review");
             }
             else
             {
                 Response.Redirect("/user/rate-garage.aspx?id=" + userId.Value + "");
-                   }
+            }
         }
 
+        protected void gridGarage_OnRowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                Label lblName = (Label)e.Row.FindControl("lblName");
+                HtmlAnchor anchorName = (HtmlAnchor)e.Row.FindControl("anchorName");
+                anchorName.InnerText = lblName.Text;
+                lblName.Visible = false;
+            }
+        }
+
+        protected void ddlThana_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            baseClass.BindDropDown(ddlLocation, "location", $"SELECT LocationName Name,Id FROM Location WHERE ThanaId='{ddlThana.SelectedValue}'");
+            ddlLocation.Focus();
+        }
+
+        protected void btnSearch_OnClick(object sender, EventArgs e)
+        {
+            if (ddlThana.Text != "--THANA--" && ddlLocation.Text != "--LOCATION--" && txtSearch.Text != "")
+            {
+                baseClass.LoadGrid(gridGarage, $@"SELECT        UserList.UserId, UserList.Name, UserList.Email, UserList.MobileNo, UserList.UserType, UserList.Gender, UserList.Dob, UserList.GarageName, UserList.District DistrictId, UserList.Thana ThanaId, UserList.Location LocationId, UserList.Address, 
+                         UserList.Password, UserList.Picture, UserList.Status, UserList.Intime, UserList.Lat, UserList.Long, (SELECT SUM(Rating.Rate)/COUNT(Rating.Rate) FROM Rating WHERE Rating.GarageId=UserList.UserId) AS Rate, Upazila.Thana AS Thana, Location.LocationName, District.District AS DistrictName
+FROM           UserList  INNER JOIN
+                         Upazila ON UserList.Thana = Upazila.Id INNER JOIN
+                         District ON UserList.District= District.Id  LEFT JOIN
+                         Rating ON Rating.GarageId = UserList.UserId INNER JOIN
+                        Location ON Location.Id = UserList.Location WHERE UserList.UserType='Garage' AND UserList.Status='A' AND UserList.Thana='{ddlThana.SelectedValue}' AND UserList.Location='{ddlLocation.SelectedValue}' AND Name +' | '+MobileNo LIKE '" + txtSearch.Text + "%' ORDER BY Rate ASC");
+            }
+            else if (ddlThana.Text != "--THANA--" && ddlLocation.Text != "--LOCATION--" && txtSearch.Text == "")
+            {
+                baseClass.LoadGrid(gridGarage, $@"SELECT        UserList.UserId, UserList.Name, UserList.Email, UserList.MobileNo, UserList.UserType, UserList.Gender, UserList.Dob, UserList.GarageName, UserList.District DistrictId, UserList.Thana ThanaId, UserList.Location LocationId, UserList.Address, 
+                         UserList.Password, UserList.Picture, UserList.Status, UserList.Intime, UserList.Lat, UserList.Long, (SELECT SUM(Rating.Rate)/COUNT(Rating.Rate) FROM Rating WHERE Rating.GarageId=UserList.UserId) AS Rate, Upazila.Thana AS Thana, Location.LocationName, District.District AS DistrictName
+FROM           UserList  INNER JOIN
+                         Upazila ON UserList.Thana = Upazila.Id INNER JOIN
+                         District ON UserList.District= District.Id  LEFT JOIN
+                         Rating ON Rating.GarageId = UserList.UserId INNER JOIN
+                        Location ON Location.Id = UserList.Location WHERE UserList.UserType='Garage' AND UserList.Status='A' AND UserList.Thana='{ddlThana.SelectedValue}' AND UserList.Location='{ddlLocation.SelectedValue}' ORDER BY Rate ASC");
+
+            }
+            else if (ddlThana.Text != "--THANA--" && ddlLocation.Text == "--LOCATION--" && txtSearch.Text == "")
+            {
+                baseClass.LoadGrid(gridGarage, $@"SELECT        UserList.UserId, UserList.Name, UserList.Email, UserList.MobileNo, UserList.UserType, UserList.Gender, UserList.Dob, UserList.GarageName, UserList.District DistrictId, UserList.Thana ThanaId, UserList.Location LocationId, UserList.Address, 
+                         UserList.Password, UserList.Picture, UserList.Status, UserList.Intime, UserList.Lat, UserList.Long, (SELECT SUM(Rating.Rate)/COUNT(Rating.Rate) FROM Rating WHERE Rating.GarageId=UserList.UserId) AS Rate, Upazila.Thana AS Thana, Location.LocationName, District.District AS DistrictName
+FROM           UserList  INNER JOIN
+                         Upazila ON UserList.Thana = Upazila.Id INNER JOIN
+                         District ON UserList.District= District.Id  LEFT JOIN
+                         Rating ON Rating.GarageId = UserList.UserId INNER JOIN
+                        Location ON Location.Id = UserList.Location WHERE UserList.UserType='Garage' AND UserList.Status='A' AND UserList.Thana='{ddlThana.SelectedValue}' ORDER BY Rate ASC");
+            }
+            else
+            {
+                Load();
+            }
+        }
     }
 }

@@ -347,46 +347,40 @@ namespace GarageFindingApp.DAL
 
         public void Logout()
         {
-            HttpCookie cookies = HttpContext.Current.Request.Cookies["GarageInfo"];
-            cookies.Expires = DateTime.Now.AddDays(-1);
-            HttpContext.Current.Response.Cookies.Add(cookies);
+            HttpCookie cookie = BaseClass.CreateCookie();
+            cookie.Expires = DateTime.Now.AddDays(-1);
+            HttpContext.Current.Response.Cookies.Add(cookie);
             HttpContext.Current.Response.Redirect("/user/Default.aspx");
         }
         public string UserIdCookie()
         {
-            HttpCookie cookie = new HttpCookie("GarageInfo");
-            HttpCookie cookies = HttpContext.Current.Request.Cookies["GarageInfo"];
+            HttpCookie cookies = GetCookie();
             return cookies["UserId"];
         }
         public string NameCookie()
         {
-            HttpCookie cookie = new HttpCookie("GarageInfo");
-            HttpCookie cookies = HttpContext.Current.Request.Cookies["GarageInfo"];
+            HttpCookie cookies = GetCookie();
             return cookies["Name"];
         }
         public string MobileCookie()
         {
-            HttpCookie cookie = new HttpCookie("GarageInfo");
-            HttpCookie cookies = HttpContext.Current.Request.Cookies["GarageInfo"];
+            HttpCookie cookies = GetCookie();
             return cookies["Mobile"];
         }
         public string EmailCookie()
         {
-            HttpCookie cookie = new HttpCookie("GarageInfo");
-            HttpCookie cookies = HttpContext.Current.Request.Cookies["GarageInfo"];
+            HttpCookie cookies = GetCookie();
             return cookies["Email"];
         }
         public string TypeCookie()
         {
-            HttpCookie cookie = new HttpCookie("GarageInfo");
-            HttpCookie cookies = HttpContext.Current.Request.Cookies["GarageInfo"];
+            HttpCookie cookies = GetCookie();
             return cookies["Type"];
         }
 
         public void CheckTypeCookie(Page page, string type)
         {
-            HttpCookie cookie = new HttpCookie("GarageInfo");
-            HttpCookie cookies = HttpContext.Current.Request.Cookies["GarageInfo"];
+            HttpCookie cookies = GetCookie();
             if (cookies["Type"] != type)
             {
                 HttpContext.Current.Response.Redirect("/user/Default.aspx");
@@ -414,8 +408,7 @@ namespace GarageFindingApp.DAL
         }
         public void AdminType(Page page, string type1, string type2)
         {
-            HttpCookie cookie = new HttpCookie("GarageInfo");
-            HttpCookie cookies = HttpContext.Current.Request.Cookies["GarageInfo"];
+            HttpCookie cookies = GetCookie();
             if (cookies["Type"] == type1)
             {
             }

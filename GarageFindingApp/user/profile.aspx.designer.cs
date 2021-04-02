@@ -10,60 +10,51 @@
 namespace GarageFindingApp.user {
     
     
-    public partial class rate_garage {
+    public partial class profile {
         
         /// <summary>
-        /// ScriptManager1 control.
+        /// profileImage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.WebControls.Image profileImage;
         
         /// <summary>
-        /// Rating1 control.
+        /// nameLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.Rating Rating1;
+        protected global::System.Web.UI.WebControls.Label nameLabel;
         
         /// <summary>
-        /// txtGarage control.
+        /// callButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtGarage;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor callButton;
         
         /// <summary>
-        /// txtReview control.
+        /// mailButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtReview;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor mailButton;
         
         /// <summary>
-        /// rateValue control.
+        /// gridService control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField rateValue;
-        
-        /// <summary>
-        /// btnRating control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnRating;
+        protected global::System.Web.UI.WebControls.GridView gridService;
     }
 }

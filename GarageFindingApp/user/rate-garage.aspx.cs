@@ -10,13 +10,13 @@ using GarageFindingApp.DAL.Model;
 
 namespace GarageFindingApp.user
 {
-    public partial class rate_hall : System.Web.UI.Page
+    public partial class rate_garage : System.Web.UI.Page
     {
         private BaseClass baseClass;
         private RatingModel ratingModel;
         private RatingGateway ratingGateway;
 
-        public rate_hall()
+        public rate_garage()
         {
             baseClass = BaseClass.GetInstance();
             ratingModel = RatingModel.GetInstance();

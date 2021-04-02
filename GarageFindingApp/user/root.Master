@@ -184,6 +184,11 @@
             padding: 0;
         }
 
+        .mp {
+            margin: 0;
+            padding: 2px 0 2px 0;
+        }
+
         .pad-all {
             padding: 0 0 10px 0 !important;
         }
@@ -253,31 +258,12 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
     <!-- AdminLTE for demo purposes -->
     <script src="../Link/dist/js/demo.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
-    <link href="../Link/select2.css" rel="stylesheet" />
-    <script type="text/javascript">
-        $(function () {
-            $('.select2').select2({
-                closeOnSelect: false
-            });
-        });
-    </script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <link href="../Link/Date-Picker.css" rel="stylesheet" />
+    <%--<link href="../Link/Date-Picker.css" rel="stylesheet" />--%>
     <script>
-        function ImagePreview(input, id) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $('#"' + id + '"').prop('src', e.target.result);
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
         $(document).ready(function () {
-            $("#txtDob").datepicker({
+            $("#ContentPlaceHolder1_txtDob").datepicker({
                 changeMonth: true,
                 changeYear: true,
                 dateFormat: 'dd/mm/yy',
@@ -285,7 +271,7 @@
             });
         });
         function pageLoad() {
-            $("#txtDob").datepicker({
+            $("#ContentPlaceHolder1_txtDob").datepicker({
                 changeMonth: true,
                 changeYear: true,
                 dateFormat: 'dd/mm/yy',
@@ -293,6 +279,17 @@
             });
         };
     </script>
+    <%--select 2--%>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+    <link href="../Link/select2.css" rel="stylesheet" />
 
+    <script type="text/javascript">
+        $(function () {
+            $('.select2').select2({
+                closeOnSelect: false
+            });
+        });
+    </script>
 </body>
 </html>

@@ -15,7 +15,7 @@ namespace GarageFindingApp
         private BaseClass baseClass;
         private UserListModel userListModel;
         private UserListGateway userListGateway;
-        private HttpCookie cookie = BaseClass.GetCookie();
+        private HttpCookie cookie = HttpContext.Current.Request.Cookies["GarageInfo"];
         public log_in()
         {
             baseClass = BaseClass.GetInstance();
@@ -26,7 +26,6 @@ namespace GarageFindingApp
         {
             if (!IsPostBack)
             {
-                HttpCookie cookie = BaseClass.GetCookie();
                 if (cookie != null)
                 {
                     if (cookie["Type"] == "Customer")

@@ -122,7 +122,7 @@
             $("#<%=txtSearch.ClientID %>").autocomplete({
                 source: function (request, response) {
                     $.ajax({
-                        url: "../AutoComplete.asmx/GetUser",
+                        url: "../AutoComplete.asmx/GetGarage",
                         type: "POST",
                         dataType: "json",
                         contentType: "application/json; charset=utf-8",
