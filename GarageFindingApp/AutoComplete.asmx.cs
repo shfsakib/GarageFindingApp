@@ -63,7 +63,29 @@ namespace GarageFindingApp
             try
             {
 
-                string query = @"SELECT Name +' | '+MobileNo txt FROM UserList WHERE Name +' | '+Email +' | '+MobileNo LIKE '%" + txt + "%' AND UserType='Garage'";
+                string query = @"SELECT GarageName +' | '+MobileNo txt FROM UserList WHERE GarageName +' | '+Email +' | '+MobileNo LIKE '%" + txt + "%' AND UserType='Garage'";
+                using (cmd = new SqlCommand(query, conn))
+                {
+                    if (conn.State != System.Data.ConnectionState.Open) conn.Open();
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        result.Add(reader["txt"].ToString().TrimEnd());
+                    }
+                }
+            }
+            catch (Exception ex) { }
+            return result;
+        }
+        [WebMethod]
+        public List<string> GetAdmin(string txt)
+        {
+            List<string> result = new List<string>();
+            try
+            {
+
+                string query = @"SELECT Name +' | '+MobileNo txt FROM Admin WHERE Name +' | '+Email +' | '+MobileNo LIKE '%" + txt + "%'";
                 using (cmd = new SqlCommand(query, conn))
                 {
                     if (conn.State != System.Data.ConnectionState.Open) conn.Open();

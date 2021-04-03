@@ -36,6 +36,13 @@ namespace GarageFindingApp.user
                 baseClass.IsExist($"Select Name FROM UserList WHERE UserId='{Request.QueryString["id"].ToString()}'");
             callButton.HRef = "tel:" + baseClass.IsExist($"Select MobileNo FROM UserList WHERE UserId='{Request.QueryString["id"].ToString()}'");
             mailButton.HRef = "mailto:" + baseClass.IsExist($"Select Email FROM UserList WHERE UserId='{Request.QueryString["id"].ToString()}'");
+            string type = baseClass.IsExist($"Select UserType FROM UserList WHERE UserId='{Request.QueryString["id"].ToString()}'");
+            if (type == "Garage")
+            {
+                gridService.Visible = true;
+            }
+            else
+                gridService.Visible = false;
             baseClass.LoadGrid(gridService, $"SELECT * FROM SERVICE WHERE GarageId='{Request.QueryString["id"].ToString()}' ORDER BY SERVICENAME ASC");
         }
     }

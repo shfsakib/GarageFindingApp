@@ -192,6 +192,9 @@
         .pad-all {
             padding: 0 0 10px 0 !important;
         }
+         .wd {
+            margin-top: 2px;
+        }
     </style>
     <%--<style>
         .ui-menu-item {
@@ -272,6 +275,22 @@
         });
         function pageLoad() {
             $("#ContentPlaceHolder1_txtDob").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd/mm/yy',
+                yearRange: '1901:2099'
+            });
+        };
+        $(document).ready(function () {
+            $(".dateJ").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd/mm/yy',
+                yearRange: '1901:2099'
+            });
+        });
+        function pageLoad() {
+            $(".dateJ").datepicker({
                 changeMonth: true,
                 changeYear: true,
                 dateFormat: 'dd/mm/yy',

@@ -51,7 +51,7 @@ FROM            Upazila INNER JOIN
 FROM            Upazila INNER JOIN
                          Location ON Upazila.Id = Location.ThanaId INNER JOIN
                          District ON Upazila.DistrictId = District.Id INNER JOIN
-                         UserList ON District.Id = UserList.District AND Upazila.Id = UserList.Thana AND Location.Id = UserList.Location WHERE UserType='Garage' AND Status='" + ddlStatus.SelectedValue + "' AND UserList.Name +' | '+UserList.MobileNo LIKE '" + txtSearch.Text + "%'";
+                         UserList ON District.Id = UserList.District AND Upazila.Id = UserList.Thana AND Location.Id = UserList.Location WHERE UserType='Garage' AND Status='" + ddlStatus.SelectedValue + "' AND UserList.GarageName +' | '+UserList.MobileNo LIKE '" + txtSearch.Text + "%'";
             baseClass.LoadGrid(gridUser, query);
         }
 

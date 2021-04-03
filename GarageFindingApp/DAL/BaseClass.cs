@@ -449,5 +449,11 @@ namespace GarageFindingApp.DAL
             return id;
         }
 
+        public string TimeConvert(string time)
+        {
+            DateTime dateTime = Convert.ToDateTime(time);
+            return dateTime.ToString("hh:mm tt");
+        }
+
     }
 }

@@ -8,27 +8,27 @@ using GarageFindingApp.DAL.Model;
 
 namespace GarageFindingApp.DAL.Gateway
 {
-    public class AdminGateway
+    public class BookServiceGateway
     {
         private SqlConnection con;
         private SqlCommand cmd;
         private BaseClass baseClass;
 
-        public AdminGateway()
+        public BookServiceGateway()
         {
             baseClass = BaseClass.GetInstance();
             con = new SqlConnection(baseClass.Connection);
         }
-        private static AdminGateway _instance;
-        public static AdminGateway GetInstance()
+        private static BookServiceGateway _instance;
+        public static BookServiceGateway GetInstance()
         {
             if (_instance == null)
             {
-                _instance = new AdminGateway();
+                _instance = new BookServiceGateway();
             }
             return _instance;
         }
-        internal bool Insert(AdminModel ob)
+        internal bool BookService(BookServiceModel ob)
         {
             bool result = false;
             SqlTransaction transaction = null;
@@ -37,17 +37,18 @@ namespace GarageFindingApp.DAL.Gateway
                 if (con.State != ConnectionState.Open)
                     con.Open();
                 transaction = con.BeginTransaction();
-                cmd = new SqlCommand("INSERT INTO Admin(Name,Email,MobileNo,Gender,Dob,Picture,Password,Type,Status,InTime) VALUES(@Name,@Email,@MobileNo,@Gender,@Dob,@Picture,@Password,@Type,@Status,@InTime)", con);
-                cmd.Parameters.AddWithValue("@Name", ob.Name);
-                cmd.Parameters.AddWithValue("@Email", ob.Email);
-                cmd.Parameters.AddWithValue("@MobileNo", ob.MobileNo);
-                cmd.Parameters.AddWithValue("@Gender", ob.Gender);
-                cmd.Parameters.AddWithValue("@Dob", ob.Dob);
-                cmd.Parameters.AddWithValue("@Picture", ob.Picture);
-                cmd.Parameters.AddWithValue("@Password", ob.Password);
-                cmd.Parameters.AddWithValue("@Type", ob.Type);
+                cmd = new SqlCommand("INSERT INTO BookService(BookId,GarageId,CustId,BookingDate,BookingTime,BkashNo,TransactionNo,Amount,Status,Intime,TokenId) VALUES(@BookId,@GarageId,@CustId,@BookingDate,@BookingTime,@BkashNo,@TransactionNo,@Amount,@Status,@Intime,@TokenId)", con);
+                cmd.Parameters.AddWithValue("@BookId", ob.BookId);
+                cmd.Parameters.AddWithValue("@GarageId", ob.GarageId);
+                cmd.Parameters.AddWithValue("@CustId", ob.CustId);
+                cmd.Parameters.AddWithValue("@BookingDate", ob.BookingDate);
+                cmd.Parameters.AddWithValue("@BookingTime", ob.BookingTime);
+                cmd.Parameters.AddWithValue("@BkashNo", ob.BkashNo);
+                cmd.Parameters.AddWithValue("@TransactionNo", ob.TransactionNo);
+                cmd.Parameters.AddWithValue("@Amount", ob.Amount);
                 cmd.Parameters.AddWithValue("@Status", ob.Status);
-                cmd.Parameters.AddWithValue("@InTime", ob.InTime);
+                cmd.Parameters.AddWithValue("@Intime", ob.Intime);
+                cmd.Parameters.AddWithValue("@TokenId", ob.TokenId);
 
                 cmd.Transaction = transaction;
                 cmd.ExecuteNonQuery();
@@ -62,7 +63,7 @@ namespace GarageFindingApp.DAL.Gateway
             }
             return result;
         }
-        internal bool Update(AdminModel ob)
+        internal bool Delete(BookServiceModel ob)
         {
             bool result = false;
             SqlTransaction transaction = null;
@@ -71,9 +72,8 @@ namespace GarageFindingApp.DAL.Gateway
                 if (con.State != ConnectionState.Open)
                     con.Open();
                 transaction = con.BeginTransaction();
-                cmd = new SqlCommand("UPDATE Admin SET Status=@Status WHERE Id=@Id", con);
-                cmd.Parameters.AddWithValue("@Status", ob.Status);
-                cmd.Parameters.AddWithValue("@Id", ob.Id);
+                cmd = new SqlCommand("DELETE FROM BookService WHERE BookId=@BookId", con);
+                cmd.Parameters.AddWithValue("@BookId", ob.BookId);
 
                 cmd.Transaction = transaction;
                 cmd.ExecuteNonQuery();

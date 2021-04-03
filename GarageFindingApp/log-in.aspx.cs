@@ -30,7 +30,7 @@ namespace GarageFindingApp
                 {
                     if (cookie["Type"] == "Customer")
                     {
-                        Response.Redirect("Default.aspx");
+                        Response.Redirect("/user/Default.aspx");
                     }
                     else if (cookie["Type"] == "Garage")
                     {
@@ -82,7 +82,7 @@ namespace GarageFindingApp
                     Response.Cookies.Add(cookie);
                     if (cookie["Type"] == "Customer")
                     {
-                        Response.Redirect("Default.aspx");
+                        Response.Redirect("/user/Default.aspx");
                     }
                     else if (cookie["Type"] == "Garage")
                     {

@@ -80,23 +80,17 @@ FROM           UserList  INNER JOIN
             {
                 baseClass.PopAlert(this,"Please log in first to book service");
             }
-
-        }
-
-        protected void lnkRating_OnClick(object sender, EventArgs e)
-        {
-            LinkButton lnkRate = (LinkButton)sender;
-            HiddenField userId = (HiddenField)lnkRate.Parent.FindControl("userId");
-            if (baseClass.UserIdCookie() == null)
-            {
-                baseClass.PopAlert(this, "You must log in first to submit review");
-            }
             else
             {
-                Response.Redirect("/user/rate-garage.aspx?id=" + userId.Value + "");
+                LinkButton linkButton = (LinkButton) sender;
+                HiddenField userId = (HiddenField) linkButton.Parent.FindControl("userId");
+                Response.Redirect("/user/book-service.aspx?id="+userId.Value);
+
             }
+
         }
 
+       
         protected void gridGarage_OnRowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -124,7 +118,7 @@ FROM           UserList  INNER JOIN
                          Upazila ON UserList.Thana = Upazila.Id INNER JOIN
                          District ON UserList.District= District.Id  LEFT JOIN
                          Rating ON Rating.GarageId = UserList.UserId INNER JOIN
-                        Location ON Location.Id = UserList.Location WHERE UserList.UserType='Garage' AND UserList.Status='A' AND UserList.Thana='{ddlThana.SelectedValue}' AND UserList.Location='{ddlLocation.SelectedValue}' AND Name +' | '+MobileNo LIKE '" + txtSearch.Text + "%' ORDER BY Rate ASC");
+                        Location ON Location.Id = UserList.Location WHERE UserList.UserType='Garage' AND UserList.Status='A' AND UserList.Thana='{ddlThana.SelectedValue}' AND UserList.Location='{ddlLocation.SelectedValue}' AND GarageName +' | '+MobileNo LIKE '" + txtSearch.Text + "%' ORDER BY Rate ASC");
             }
             else if (ddlThana.Text != "--THANA--" && ddlLocation.Text != "--LOCATION--" && txtSearch.Text == "")
             {

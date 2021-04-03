@@ -129,6 +129,8 @@
     <Content Include="Rating\WaitingStar.png" />
     <Content Include="user\add-service.aspx" />
     <Content Include="user\add-location.aspx" />
+    <Content Include="user\admin-list.aspx" />
+    <Content Include="user\book-service.aspx" />
     <Content Include="user\create-admin.aspx" />
     <Content Include="user\customer-list.aspx" />
     <Content Include="user\garage-list.aspx" />
@@ -341,6 +343,7 @@
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="sign-up.aspx" />
     <Content Include="user\Default.aspx" />
+    <Content Include="user\service-request.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -350,11 +353,13 @@
     </Compile>
     <Compile Include="DAL\BaseClass.cs" />
     <Compile Include="DAL\Gateway\AdminGateway.cs" />
+    <Compile Include="DAL\Gateway\BookServiceGateway.cs" />
     <Compile Include="DAL\Gateway\LocationGateway.cs" />
     <Compile Include="DAL\Gateway\RatingGateway.cs" />
     <Compile Include="DAL\Gateway\ServiceGateway.cs" />
     <Compile Include="DAL\Gateway\UserListGateway.cs" />
     <Compile Include="DAL\Model\AdminModel.cs" />
+    <Compile Include="DAL\Model\BookServiceModel.cs" />
     <Compile Include="DAL\Model\LocationModel.cs" />
     <Compile Include="DAL\Model\RatingModel.cs" />
     <Compile Include="DAL\Model\ServiceModel.cs" />
@@ -387,6 +392,20 @@
     </Compile>
     <Compile Include="user\add-location.aspx.designer.cs">
       <DependentUpon>add-location.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\admin-list.aspx.cs">
+      <DependentUpon>admin-list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\admin-list.aspx.designer.cs">
+      <DependentUpon>admin-list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\book-service.aspx.cs">
+      <DependentUpon>book-service.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\book-service.aspx.designer.cs">
+      <DependentUpon>book-service.aspx</DependentUpon>
     </Compile>
     <Compile Include="user\create-admin.aspx.cs">
       <DependentUpon>create-admin.aspx</DependentUpon>
@@ -436,6 +455,13 @@
     </Compile>
     <Compile Include="user\root.Master.designer.cs">
       <DependentUpon>root.Master</DependentUpon>
+    </Compile>
+    <Compile Include="user\service-request.aspx.cs">
+      <DependentUpon>service-request.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\service-request.aspx.designer.cs">
+      <DependentUpon>service-request.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -19,7 +19,7 @@
                 </asp:DropDownList>
             </div>
             <div class="col-xs-12 col-md-4" style="margin: 0; padding: 5px 15px 0 15px;">
-                <asp:TextBox ID="txtSearch" runat="server" autocomplete="off" class="form-controls" placeholder="Search by name or email"></asp:TextBox>
+                <asp:TextBox ID="txtSearch" runat="server" autocomplete="off" class="form-controls" placeholder="Search by garage name or email"></asp:TextBox>
             </div>
             <div class="col-xs-12 col-md-2" style="margin: 0; padding: 5px 15px 0 15px;">
                 <asp:Button ID="btnSearch" OnClick="btnSearch_OnClick" runat="server" Width="100%" class="btn btn-warning" Text="Search" />
@@ -48,8 +48,7 @@
                                                 <p class="mp"><i class="far fa-envelope text-primary" title="Location"></i><%#" "+Eval("Email")%></p>
                                                 <p class="mp"><i class="fas fa-phone-alt text-primary" title="Location"></i><%#" "+Eval("MobileNo")%></p>
                                                 <p class="mp font-20 text-success">
-                                                    <asp:LinkButton ID="lnkBook" OnClick="lnkBook_OnClick" class="btn btn-success" runat="server" ToolTip="Click for booking">Book Service</asp:LinkButton>
-                                                    <asp:LinkButton ID="lnkRating" OnClick="lnkRating_OnClick" class="btn btn-warning" runat="server" ToolTip="Rate">Rate</asp:LinkButton>
+                                                    <asp:LinkButton ID="lnkBook" OnClick="lnkBook_OnClick" class="btn btn-success"  runat="server" ToolTip="Click for booking">Book Service</asp:LinkButton>
                                                     <%--<asp:LinkButton ID="lnkViewMap" OnClick="lnkViewMap_OnClick" class="btn btn-primary" runat="server" ToolTip="View Map">View Map Location</asp:LinkButton>--%>
                                                 </p>
                                             </div>
