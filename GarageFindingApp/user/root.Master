@@ -96,7 +96,7 @@
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                            <a href="/user/own-profile.aspx?id" class="btn btn-default btn-flat">Profile</a>
                                         </div>
                                         <div class="pull-right">
                                             <asp:LinkButton ID="lnkLogOut" class="btn btn-default btn-flat" OnClick="lnkLogOut_OnClick" runat="server">Sign out</asp:LinkButton>

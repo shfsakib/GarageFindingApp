@@ -135,6 +135,7 @@
     <Content Include="user\customer-booking-request.aspx" />
     <Content Include="user\customer-list.aspx" />
     <Content Include="user\garage-list.aspx" />
+    <Content Include="user\monthly-charge.aspx" />
     <Content Include="user\own-profile.aspx" />
     <Content Include="user\profile.aspx" />
     <Content Include="user\rate-garage.aspx" />
@@ -443,6 +444,13 @@
     </Compile>
     <Compile Include="user\garage-list.aspx.designer.cs">
       <DependentUpon>garage-list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\monthly-charge.aspx.cs">
+      <DependentUpon>monthly-charge.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\monthly-charge.aspx.designer.cs">
+      <DependentUpon>monthly-charge.aspx</DependentUpon>
     </Compile>
     <Compile Include="user\own-profile.aspx.cs">
       <DependentUpon>own-profile.aspx</DependentUpon>

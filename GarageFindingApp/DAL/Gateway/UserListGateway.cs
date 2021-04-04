@@ -96,5 +96,43 @@ namespace GarageFindingApp.DAL.Gateway
             }
             return result;
         }
+        internal bool UpdateProfile(UserListModel ob)
+        {
+            bool result = false;
+            SqlTransaction transaction = null;
+            try
+            {
+                if (con.State != ConnectionState.Open)
+                    con.Open();
+                transaction = con.BeginTransaction();
+                cmd = new SqlCommand("UPDATE UserList SET Name=@Name,MobileNo=@MobileNo,Gender=@Gender,Dob=@Dob,GarageName=@GarageName,District=@District,Thana=@Thana,Location=@Location,Address=@Address,Password=@Password,Picture=@Picture,Lat=@Lat,Long=@Long WHERE UserId=@UserId", con);
+                cmd.Parameters.AddWithValue("@Name", ob.Name);
+                cmd.Parameters.AddWithValue("@MobileNo", ob.MobileNo);
+                cmd.Parameters.AddWithValue("@Gender", ob.Gender);
+                cmd.Parameters.AddWithValue("@Dob", ob.Dob);
+                cmd.Parameters.AddWithValue("@GarageName", ob.GarageName);
+                cmd.Parameters.AddWithValue("@District", ob.District);
+                cmd.Parameters.AddWithValue("@Thana", ob.Thana);
+                cmd.Parameters.AddWithValue("@Location", ob.Location);
+                cmd.Parameters.AddWithValue("@Address", ob.Address);
+                cmd.Parameters.AddWithValue("@Password", ob.Password);
+                cmd.Parameters.AddWithValue("@Picture", ob.Picture);
+                cmd.Parameters.AddWithValue("@Lat", ob.Lat);
+                cmd.Parameters.AddWithValue("@Long", ob.Long);
+                cmd.Parameters.AddWithValue("@UserId", ob.UserId);
+
+                cmd.Transaction = transaction;
+                cmd.ExecuteNonQuery();
+                transaction.Commit();
+                result = true;
+                if (con.State != ConnectionState.Closed)
+                    con.Close();
+            }
+            catch (Exception)
+            {
+                transaction.Rollback();
+            }
+            return result;
+        }
     }
 }

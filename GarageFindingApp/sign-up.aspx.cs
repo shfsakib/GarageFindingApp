@@ -27,7 +27,7 @@ namespace GarageFindingApp
             if (!IsPostBack)
             {
                 txtName.Focus();
-                baseClass.BindDropDown(ddlDistrict, "division", "SELECT District NAME, Id FROM District ORDER BY NAME ASC");
+                baseClass.BindDropDown(ddlDistrict, "District", "SELECT District NAME, Id FROM District ORDER BY NAME ASC");
             }
         }
        

@@ -21,7 +21,7 @@
             <div class="col-md-4" style="text-align: center">
                 <br />
                 <asp:Label ID="nameLabel" runat="server" Style="font-family: comic sans ms; font-size: 20px;" Text="Label"></asp:Label>
-                <asp:TextBox ID="txtName" CssClass="form-control wd"  Visible="False" placeholder="Full Name" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtName" CssClass="form-control"  Visible="False" placeholder="Full Name" runat="server"></asp:TextBox>
             </div>
             <div class="col-md-4"></div>
         </div>
@@ -29,91 +29,89 @@
             <div class="col-md-4"></div>
             <div class="col-md-4" style="text-align: center">
                 <br />
-                <a id="btnEdit" runat="server" class="btn btn-primary" style="color: white;" title="Edit" OnServerClick="btnEdit_OnServerClick"><i class="fas fa-edit"></i>&nbsp;&nbsp;Edit Profile</a>
-                <asp:LinkButton ID="lnkUpdate" Visible="False" CssClass="btn btn-success" OnClick="lnkUpdate_OnClick" runat="server"><i class="fas fa-check"></i>&nbsp;&nbsp;Update</asp:LinkButton>
-                <br/>
-                 </div>
+                <a id="btnEdit" runat="server" class="btn btn-primary" style="color: white;" title="Edit"><i class="fas fa-edit"></i>&nbsp;&nbsp;Edit Profile</a>
+                <asp:LinkButton ID="lnkUpdate" CssClass="btn btn-success" runat="server"><i class="fas fa-check"></i>&nbsp;&nbsp;Update</asp:LinkButton>
+            </div>
             <div class="col-md-4"></div>
         </div>
-        <hr/>
         <div class="row">
-            <div class="col-xs-4">Email :</div>
-            <div class="col-xs-8" >
+            <div class="col-2">Email :</div>
+            <div class="col-4" >
                 <asp:Label ID="lblEmail" runat="server" Text=""></asp:Label>
             </div>
-            <div class="col-xs-4">
+            <div class="col-md-2">
                 Mobile No. :
             </div>
-            <div class="col-xs-8" >
+            <div class="col-md-4" >
                 <asp:Label ID="lblMobile" runat="server" Text=""></asp:Label>
-                <asp:TextBox ID="txtMobile" CssClass="form-control wd"  Visible="False" autocomplete="off" placeholder="01XXXXXXXXX" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtMobile" CssClass="form-control"  Visible="False" autocomplete="off" placeholder="01XXXXXXXXX" runat="server"></asp:TextBox>
             </div>
         </div>
         <div class="row" id="userDiv" runat="server">
-            <div class="col-xs-4">Gender :</div>
-            <div class="col-xs-8" >
+            <div class="col-md-2">Gender :</div>
+            <div class="col-md-4" >
                 <asp:Label ID="lblGender" runat="server" Text=""></asp:Label>
-                <asp:DropDownList ID="ddlGender" class="form-control wds" Visible="False" Style="border-right: 1px solid gainsboro" runat="server">
+                <asp:DropDownList ID="ddlGender" class="form-controls" Visible="False" Style="border-right: 1px solid gainsboro" runat="server">
                     <asp:ListItem>--Select--</asp:ListItem>
                     <asp:ListItem>Male</asp:ListItem>
                     <asp:ListItem>Female</asp:ListItem>
                 </asp:DropDownList>
             </div>
-            <div class="col-xs-4">
+            <div class="col-md-2">
                 Date of Birth :
             </div>
-            <div class="col-xs-8" >
+            <div class="col-md-4" >
                 <asp:Label ID="lblDob" runat="server" Text=""></asp:Label>
-                <asp:TextBox ID="txtDob" CssClass="form-control wd dateJ" Visible="False" autocomplete="off" placeholder="dd/mm/yyyy" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtDob" CssClass="form-control dateJ" Visible="False" autocomplete="off" placeholder="dd/mm/yyyy" runat="server"></asp:TextBox>
             </div>
         </div>
         <div class="row" id="garageDiv" runat="server">
-            <div class="col-xs-4">Garage Name :</div>
-            <div class="col-xs-8" >
-                <asp:Label ID="lblGarageName" runat="server" Text=""></asp:Label>
-                <asp:TextBox ID="txtGarageName" CssClass="form-control wd" Visible="False" autocomplete="off" placeholder="Garage name" runat="server"></asp:TextBox>
+            <div class="col-md-2">Garage Name :</div>
+            <div class="col-md-4" >
+                <asp:Label ID="Label4" runat="server" Text=""></asp:Label>
+                <asp:TextBox ID="txtGarageName" CssClass="form-control" Visible="False" autocomplete="off" placeholder="Garage name" runat="server"></asp:TextBox>
 
             </div>
-            <div class="col-xs-4">
+            <div class="col-md-2">
                 District :
             </div>
-            <div class="col-xs-8" >
+            <div class="col-md-4" >
                 <asp:Label ID="lbldistrict" runat="server" Text=""></asp:Label>
-                <asp:DropDownList ID="ddlDistrict" class="form-control wd select2" Visible="False" Style="border-right: 1px solid gainsboro;margin: 2px 0 0 0;" runat="server">
+                <asp:DropDownList ID="ddlDistrict" class="form-control select2" Visible="False" Style="border-right: 1px solid gainsboro" runat="server">
                     <asp:ListItem>--DISTRICT--</asp:ListItem>
                 </asp:DropDownList>
             </div>
-            <div class="col-xs-4">
+            <div class="col-md-2">
                 Thana :
             </div>
-            <div class="col-xs-8" >
+            <div class="col-md-4" >
                 <asp:Label ID="lblThana" runat="server" Text=""></asp:Label>
-                <asp:DropDownList ID="ddlThana" class="form-control wd select2" Visible="False" Style="border-right: 1px solid gainsboro;margin: 2px 0 0 0;" runat="server">
+                <asp:DropDownList ID="ddlThana" class="form-control select2" Visible="False" Style="border-right: 1px solid gainsboro" runat="server">
                     <asp:ListItem>--THANA--</asp:ListItem>
                 </asp:DropDownList>
             </div>
-            <div class="col-xs-4">
-                Location :
+            <div class="col-md-2">
+                District :
             </div>
-            <div class="col-xs-8" >
+            <div class="col-md-4" >
                 <asp:Label ID="lblLocation" runat="server" Text=""></asp:Label>
-                <asp:DropDownList ID="ddlLocation" class="form-control wd select2" Visible="False" Style="border-right: 1px solid gainsboro;margin: 2px 0 0 0;" runat="server">
+                <asp:DropDownList ID="ddlLocation" class="form-control select2" Visible="False" Style="border-right: 1px solid gainsboro" runat="server">
                     <asp:ListItem>--LOCATION--</asp:ListItem>
                 </asp:DropDownList>
             </div>
-            <div class="col-xs-4">
+            <div class="col-md-2">
                 Address :
             </div>
-            <div class="col-xs-8" >
+            <div class="col-md-4" >
                 <asp:Label ID="lblAddress" runat="server" Text=""></asp:Label>
-                <asp:TextBox ID="txtAddress" CssClass="form-control wd" Height="80px" Visible="False" autocomplete="off" TextMode="MultiLine" runat="server" Style="border-right: 1px solid gainsboro" placeholder="Address"></asp:TextBox>
+                <asp:TextBox ID="txtAddress" CssClass="form-control" Height="80px" Visible="False" autocomplete="off" TextMode="MultiLine" runat="server" Style="border-right: 1px solid gainsboro" placeholder="Address"></asp:TextBox>
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-4">Password :</div>
-            <div class="col-xs-8" >
-                <asp:Label ID="lblPass" runat="server" Text="********"></asp:Label>
-                <asp:TextBox ID="txtPass" CssClass="form-control wd" Visible="False" placeholder="Enter Password" autocomplete="off" runat="server"></asp:TextBox>
+            <div class="col-md-2">Password :</div>
+            <div class="col-md-4" >
+                <asp:Label ID="lblPass" runat="server" Text=""></asp:Label>
+                <asp:TextBox ID="txtPass" CssClass="form-control" Visible="False" placeholder="Enter Password" autocomplete="off" TextMode="Password" runat="server"></asp:TextBox>
             </div>
         </div>
         <asp:TextBox ID="lat" runat="server" Style="display: none;"></asp:TextBox>
