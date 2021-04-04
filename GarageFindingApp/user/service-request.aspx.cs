@@ -36,7 +36,7 @@ namespace GarageFindingApp.user
                          BookService.Intime, BookService.TokenId, A.GarageName AS GarageName, UserList.Name AS CustName, A.Picture AS GaragePic, UserList.Picture AS CustPicture
 FROM            BookService INNER JOIN
                          UserList AS A ON BookService.GarageId = A.UserId INNER JOIN
-                         UserList ON BookService.CustId = UserList.UserId WHERE BookService.CustId='{baseClass.UserIdCookie()}' AND BookService.Status!='R' AND BookService.Status='A' ORDER BY BookService.BookId DESC");
+                         UserList ON BookService.CustId = UserList.UserId WHERE BookService.CustId='{baseClass.UserIdCookie()}' AND (BookService.Status='R' OR BookService.Status='A') ORDER BY BookService.BookId DESC");
         }
         protected void gridbook_OnRowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -61,6 +61,13 @@ FROM            BookService INNER JOIN
                     lblStatus.ForeColor = Color.Green;
                     lnkRemove.Visible = false;
                     lnkRating.Visible = true;
+                }
+                else if (status.Value == "R")
+                {
+                    lblStatus.Text = "Rejected";
+                    lblStatus.ForeColor = Color.Red;
+                    lnkRemove.Visible = false;
+                    lnkRating.Visible = false;
                 }
             }
         }
@@ -123,7 +130,7 @@ FROM            BookService INNER JOIN
                          BookService.Intime, BookService.TokenId, A.GarageName AS GarageName, UserList.Name AS CustName, A.Picture AS GaragePic, UserList.Picture AS CustPicture
 FROM            BookService INNER JOIN
                          UserList AS A ON BookService.GarageId = A.UserId INNER JOIN
-                         UserList ON BookService.CustId = UserList.UserId WHERE BookService.CustId='{baseClass.UserIdCookie()}' AND BookService.Status='A' ORDER BY BookService.BookId DESC");
+                         UserList ON BookService.CustId = UserList.UserId WHERE BookService.CustId='{baseClass.UserIdCookie()}' AND (BookService.Status='R' OR BookService.Status='A') ORDER BY BookService.BookId DESC");
                 }
                 else
                 {
@@ -131,7 +138,7 @@ FROM            BookService INNER JOIN
                          BookService.Intime, BookService.TokenId, A.GarageName AS GarageName, UserList.Name AS CustName, A.Picture AS GaragePic, UserList.Picture AS CustPicture
 FROM            BookService INNER JOIN
                          UserList AS A ON BookService.GarageId = A.UserId INNER JOIN
-                         UserList ON BookService.CustId = UserList.UserId WHERE BookService.CustId='{baseClass.UserIdCookie()}' AND BookService.Status='A' AND BookService.BookingDate='{txtDate.Text}' ORDER BY BookService.BookId DESC");
+                         UserList ON BookService.CustId = UserList.UserId WHERE BookService.CustId='{baseClass.UserIdCookie()}' AND (BookService.Status='R' OR BookService.Status='A') AND BookService.BookingDate='{txtDate.Text}' ORDER BY BookService.BookId DESC");
                 }
             }
         }

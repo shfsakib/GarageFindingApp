@@ -357,6 +357,11 @@ namespace GarageFindingApp.DAL
             HttpCookie cookies = GetCookie();
             return cookies["UserId"];
         }
+        public string PictureCookie()
+        {
+            HttpCookie cookies = GetCookie();
+            return cookies["Picture"];
+        }
         public string NameCookie()
         {
             HttpCookie cookies = GetCookie();

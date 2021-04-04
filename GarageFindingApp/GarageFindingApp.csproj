@@ -132,8 +132,10 @@
     <Content Include="user\admin-list.aspx" />
     <Content Include="user\book-service.aspx" />
     <Content Include="user\create-admin.aspx" />
+    <Content Include="user\customer-booking-request.aspx" />
     <Content Include="user\customer-list.aspx" />
     <Content Include="user\garage-list.aspx" />
+    <Content Include="user\own-profile.aspx" />
     <Content Include="user\profile.aspx" />
     <Content Include="user\rate-garage.aspx" />
     <Content Include="user\root.Master" />
@@ -414,6 +416,13 @@
     <Compile Include="user\create-admin.aspx.designer.cs">
       <DependentUpon>create-admin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="user\customer-booking-request.aspx.cs">
+      <DependentUpon>customer-booking-request.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\customer-booking-request.aspx.designer.cs">
+      <DependentUpon>customer-booking-request.aspx</DependentUpon>
+    </Compile>
     <Compile Include="user\customer-list.aspx.cs">
       <DependentUpon>customer-list.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -434,6 +443,13 @@
     </Compile>
     <Compile Include="user\garage-list.aspx.designer.cs">
       <DependentUpon>garage-list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\own-profile.aspx.cs">
+      <DependentUpon>own-profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\own-profile.aspx.designer.cs">
+      <DependentUpon>own-profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="user\profile.aspx.cs">
       <DependentUpon>profile.aspx</DependentUpon>

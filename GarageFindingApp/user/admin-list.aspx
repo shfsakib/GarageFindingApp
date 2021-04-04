@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <section class="content-header">
-        <h1>Customer List</h1>
+        <h1>Admin List</h1>
     </section>
     <div class="row pad-all">
         <div class="col-12 col-md-12 align-items-center">

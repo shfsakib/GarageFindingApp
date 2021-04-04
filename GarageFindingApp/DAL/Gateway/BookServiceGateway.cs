@@ -88,5 +88,31 @@ namespace GarageFindingApp.DAL.Gateway
             }
             return result;
         }
+        internal bool Update(BookServiceModel ob)
+        {
+            bool result = false;
+            SqlTransaction transaction = null;
+            try
+            {
+                if (con.State != ConnectionState.Open)
+                    con.Open();
+                transaction = con.BeginTransaction();
+                cmd = new SqlCommand("UPDATE BookService SET Status=@Status WHERE BookId=@BookId", con);
+                cmd.Parameters.AddWithValue("@Status", ob.Status);
+                cmd.Parameters.AddWithValue("@BookId", ob.BookId);
+
+                cmd.Transaction = transaction;
+                cmd.ExecuteNonQuery();
+                transaction.Commit();
+                result = true;
+                if (con.State != ConnectionState.Closed)
+                    con.Close();
+            }
+            catch (Exception)
+            {
+                transaction.Rollback();
+            }
+            return result;
+        }
     }
 }

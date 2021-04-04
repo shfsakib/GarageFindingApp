@@ -40,9 +40,13 @@ namespace GarageFindingApp.user
             if (type == "Garage")
             {
                 gridService.Visible = true;
+                lblService.Visible = true;
             }
             else
-                gridService.Visible = false;
+            {
+                gridService.Visible = lblService.Visible = false;
+            }
+
             baseClass.LoadGrid(gridService, $"SELECT * FROM SERVICE WHERE GarageId='{Request.QueryString["id"].ToString()}' ORDER BY SERVICENAME ASC");
         }
     }

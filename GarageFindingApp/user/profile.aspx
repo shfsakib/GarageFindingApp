@@ -32,7 +32,7 @@
             <div class="col-md-4"></div>
         </div><div class="row">
             <div class="col-md-12">
-                <h4>Service List:</h4>
+                <h4 runat="server" id="lblService">Service List:</h4>
             </div>
         </div>
         <div class="row">

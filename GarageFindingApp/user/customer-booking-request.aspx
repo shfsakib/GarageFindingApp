@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/user/root.Master" AutoEventWireup="true" CodeBehind="service-request.aspx.cs" Inherits="GarageFindingApp.user.service_request" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/user/root.Master" AutoEventWireup="true" CodeBehind="customer-booking-request.aspx.cs" Inherits="GarageFindingApp.user.customer_booking_request" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -15,9 +15,8 @@
                 <a href="#" class="btn btn-warning">Search</a>
             </div>
             <div class="col-xs-12 col-md-5" style="margin: 0; padding: 0 15px 0 15px;">
-                <asp:CheckBox ID="chkPending" runat="server" OnCheckedChanged="chkPending_OnCheckedChanged" AutoPostBack="True" Style="font-size: 18px;" Text="&nbsp; Show pending request"></asp:CheckBox>
+                <asp:CheckBox ID="chkPending" runat="server" OnCheckedChanged="chkPending_OnCheckedChanged" AutoPostBack="True" Style="font-size: 18px;" Text="&nbsp; Show history"></asp:CheckBox>
             </div>
-
         </div>
     </div>
     <div class="col-md-12">
@@ -31,7 +30,7 @@
                                     <div class="col-12 p-3 pl-2" style="padding: 10px;">
                                         <div class="row p-0">
                                             <div class="col-4 col-lg-2 mp tc text-center">
-                                                <asp:Image runat="server" class="mt-1" Width="150px" Height="150px" ImageUrl='<%#Eval("GaragePic") %>' Style="border: 2px solid #696969"></asp:Image>
+                                                <asp:Image runat="server" class="mt-1" Width="150px" Height="150px" ImageUrl='<%#Eval("CustPicture") %>' Style="border: 2px solid #696969"></asp:Image>
                                             </div>
                                             <div class="col-8 col-lg-6 pl-2">
                                                 <asp:HiddenField ID="BookId" runat="server" Value='<%#Eval("BookId") %>' />
@@ -40,7 +39,7 @@
                                                 <asp:HiddenField ID="status" runat="server" Value='<%#Eval("Status") %>' />
 
                                                 <h3>
-                                                    <asp:Label runat="server" ID="lblName" Text='<%#"You have sent booking request to "+Eval("GarageName")%>'></asp:Label></h3>
+                                                    <asp:Label runat="server" ID="lblName" Text='<%#Eval("CustName")+" send you booking request"%>'></asp:Label></h3>
                                                 <p class="mp"><i class="fas fa-calendar text-success"></i><%#" "+Eval("BookingDate")+"_"+Eval("BookingTime")%></p>
                                                 <p class="mp"><i class="fas fa-sort-numeric-down  text-primary"></i><%#" "+Eval("BkashNo")%></p>
                                                 <p class="mp"><i class="fas fa-dove text-primary"></i><%#" "+Eval("TransactionNo")%></p>
@@ -51,24 +50,16 @@
                                                     <asp:Label runat="server" ID="lblStatus" Style="font-size: 24px; font-weight: bold; font-family: comic sans ms;" Text=""></asp:Label>
                                                 </p>
                                                 <p class="mp font-20 text-success">
-                                                    <asp:LinkButton ID="lnkRemove" OnClick="lnkRemove_OnClick" class="btn btn-danger" runat="server" ToolTip="Remove"><i class="fas fa-trash-alt"></i>&nbsp;Remove</asp:LinkButton>
-                                                    <asp:LinkButton ID="lnkRating" OnClick="lnkRating_OnClick" class="btn btn-warning" runat="server" ToolTip="Rate">Rate Garage</asp:LinkButton>
-
+                                                    <asp:LinkButton ID="lnkAccept" OnClick="lnkAccept_OnClick" class="btn btn-primary" runat="server" ToolTip="Accept"><i class="fas fa-trash-alt"></i>&nbsp;Accept</asp:LinkButton>
+                                                    <asp:LinkButton ID="lnkRemove" OnClick="lnkRemove_OnClick" class="btn btn-danger" runat="server" ToolTip="Reject    "><i class="fas fa-trash-alt"></i>&nbsp;Reject</asp:LinkButton>
                                                 </p>
                                             </div>
                                             <div class="col-12 col-lg-4 mp pl-2 text-center text-lg-left">
-                                                <%--<asp:Image runat="server" class="mt-1" Width="75px" Height="75px" ImageUrl='<%#ShowImage(Eval("HallPic1").ToString())%>' Style="border: 1px solid #696969"></asp:Image>
-                                                <asp:Image runat="server" class="mt-1" Width="75px" Height="75px" ImageUrl='<%#ShowImage(Eval("HallPic2").ToString())%>' Style="border: 1px solid #696969"></asp:Image>
-                                                <asp:Image runat="server" class="mt-1" Width="75px" Height="75px" ImageUrl='<%#ShowImage(Eval("HallPic3").ToString())%>' Style="border: 1px solid #696969"></asp:Image>
-                                                <asp:Image runat="server" class="mt-1" Width="75px" Height="75px" ImageUrl='<%#ShowImage(Eval("HallPic4").ToString())%>' Style="border: 1px solid #696969"></asp:Image>
-                                                <asp:Image runat="server" class="mt-1" Width="75px" Height="75px" ImageUrl='<%#ShowImage(Eval("HallPic5").ToString())%>' Style="border: 1px solid #696969"></asp:Image>
-                                                --%>
                                             </div>
                                         </div>
                                     </div>
                                 </ItemTemplate>
                             </asp:TemplateField>
-
                         </Columns>
                     </asp:GridView>
                 </div>
