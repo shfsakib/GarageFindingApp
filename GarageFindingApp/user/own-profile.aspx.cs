@@ -31,6 +31,14 @@ namespace GarageFindingApp.user
         {
             profileImage.ImageUrl = baseClass.PictureCookie();
             nameLabel.Text = txtName.Text = baseClass.NameCookie();
+            lblEmail.Text = baseClass.EmailCookie();
+            lblMobile.Text =txtMobile.Text= baseClass.MobileCookie();
+            lblGender.Text =
+                ddlGender.Text =
+                    baseClass.IsExist($"SELECT Gender FROM UserList WHERE UserId='{baseClass.UserIdCookie()}'");
+            lblDob.Text=txtDob.Text=
+                    baseClass.IsExist($"SELECT Dob FROM UserList WHERE UserId='{baseClass.UserIdCookie()}'");
+
             string type = baseClass.TypeCookie();
             if (type == "Garage")
             {

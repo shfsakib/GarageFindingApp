@@ -12,7 +12,7 @@
             <div class="col-md-4" style="text-align: center">
                 <asp:Image ID="profileImage" runat="server" ImageUrl="/Link/dummy.png" class="rounded-circle" Width="250px" Height="250px" alt="profile_image" Style="border: 1px solid black; border-radius: 50%;" />
                 <br />
-                <asp:FileUpload ID="fileProfile" onchange="ImagePreview(this)" accept=".png,.jpg,.jpeg" runat="server" />
+                <asp:FileUpload ID="fileProfile" onchange="ImagePreview(this)" Visible="False" accept=".png,.jpg,.jpeg" runat="server" />
             </div>
             <div class="col-md-4"></div>
         </div>
@@ -21,7 +21,7 @@
             <div class="col-md-4" style="text-align: center">
                 <br />
                 <asp:Label ID="nameLabel" runat="server" Style="font-family: comic sans ms; font-size: 20px;" Text="Label"></asp:Label>
-                <asp:TextBox ID="txtName" CssClass="form-control" placeholer="Full Name" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtName" CssClass="form-control"  Visible="False" placeholder="Full Name" runat="server"></asp:TextBox>
             </div>
             <div class="col-md-4"></div>
         </div>
@@ -44,14 +44,14 @@
             </div>
             <div class="col-md-4" style="text-align: center">
                 <asp:Label ID="lblMobile" runat="server" Text=""></asp:Label>
-                <asp:TextBox ID="txtMobile" CssClass="form-control" placeholer="01XXXXXXXXX" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtMobile" CssClass="form-control"  Visible="False" autocomplete="off" placeholder="01XXXXXXXXX" runat="server"></asp:TextBox>
             </div>
         </div>
         <div class="row" id="userDiv" runat="server">
             <div class="col-md-2">Gender :</div>
             <div class="col-md-4" style="text-align: center">
                 <asp:Label ID="lblGender" runat="server" Text=""></asp:Label>
-                <asp:DropDownList ID="ddlGender" class="form-controls" Style="border-right: 1px solid gainsboro" runat="server">
+                <asp:DropDownList ID="ddlGender" class="form-controls" Visible="False" Style="border-right: 1px solid gainsboro" runat="server">
                     <asp:ListItem>--Select--</asp:ListItem>
                     <asp:ListItem>Male</asp:ListItem>
                     <asp:ListItem>Female</asp:ListItem>
@@ -62,14 +62,14 @@
             </div>
             <div class="col-md-4" style="text-align: center">
                 <asp:Label ID="lblDob" runat="server" Text=""></asp:Label>
-                <asp:TextBox ID="txtDob" CssClass="form-control dateJ" placeholer="dd/mm/yyyy" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtDob" CssClass="form-control dateJ" Visible="False" autocomplete="off" placeholder="dd/mm/yyyy" runat="server"></asp:TextBox>
             </div>
         </div>
         <div class="row" id="garageDiv" runat="server">
             <div class="col-md-2">Garage Name :</div>
             <div class="col-md-4" style="text-align: center">
                 <asp:Label ID="Label4" runat="server" Text=""></asp:Label>
-                <asp:TextBox ID="txtGarageName" CssClass="form-control" placeholer="Garage name" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtGarageName" CssClass="form-control" Visible="False" autocomplete="off" placeholder="Garage name" runat="server"></asp:TextBox>
 
             </div>
             <div class="col-md-2">
@@ -77,7 +77,7 @@
             </div>
             <div class="col-md-4" style="text-align: center">
                 <asp:Label ID="lbldistrict" runat="server" Text=""></asp:Label>
-                <asp:DropDownList ID="ddlDistrict" class="form-control select2" Style="border-right: 1px solid gainsboro" runat="server">
+                <asp:DropDownList ID="ddlDistrict" class="form-control select2" Visible="False" Style="border-right: 1px solid gainsboro" runat="server">
                     <asp:ListItem>--DISTRICT--</asp:ListItem>
                 </asp:DropDownList>
             </div>
@@ -86,7 +86,7 @@
             </div>
             <div class="col-md-4" style="text-align: center">
                 <asp:Label ID="lblThana" runat="server" Text=""></asp:Label>
-                <asp:DropDownList ID="ddlThana" class="form-control select2" Style="border-right: 1px solid gainsboro" runat="server">
+                <asp:DropDownList ID="ddlThana" class="form-control select2" Visible="False" Style="border-right: 1px solid gainsboro" runat="server">
                     <asp:ListItem>--THANA--</asp:ListItem>
                 </asp:DropDownList>
             </div>
@@ -95,7 +95,7 @@
             </div>
             <div class="col-md-4" style="text-align: center">
                 <asp:Label ID="lblLocation" runat="server" Text=""></asp:Label>
-                <asp:DropDownList ID="ddlLocation" class="form-control select2" Style="border-right: 1px solid gainsboro" runat="server">
+                <asp:DropDownList ID="ddlLocation" class="form-control select2" Visible="False" Style="border-right: 1px solid gainsboro" runat="server">
                     <asp:ListItem>--LOCATION--</asp:ListItem>
                 </asp:DropDownList>
             </div>
@@ -104,14 +104,14 @@
             </div>
             <div class="col-md-4" style="text-align: center">
                 <asp:Label ID="lblAddress" runat="server" Text=""></asp:Label>
-                <asp:TextBox ID="txtAddress" CssClass="form-control" Height="80px" TextMode="MultiLine" runat="server" Style="border-right: 1px solid gainsboro" placeholder="Address"></asp:TextBox>
+                <asp:TextBox ID="txtAddress" CssClass="form-control" Height="80px" Visible="False" autocomplete="off" TextMode="MultiLine" runat="server" Style="border-right: 1px solid gainsboro" placeholder="Address"></asp:TextBox>
             </div>
         </div>
         <div class="row">
             <div class="col-md-2">Password :</div>
             <div class="col-md-4" style="text-align: center">
                 <asp:Label ID="lblPass" runat="server" Text=""></asp:Label>
-                <asp:TextBox ID="txtPass" CssClass="form-control" placeholer="Enter Password" TextMode="Password" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtPass" CssClass="form-control" Visible="False" placeholder="Enter Password" autocomplete="off" TextMode="Password" runat="server"></asp:TextBox>
             </div>
         </div>
         <asp:TextBox ID="lat" runat="server" Style="display: none;"></asp:TextBox>
