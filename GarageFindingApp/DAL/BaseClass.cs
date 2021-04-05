@@ -388,7 +388,7 @@ namespace GarageFindingApp.DAL
             HttpCookie cookies = GetCookie();
             if (cookies["Type"] != type)
             {
-                HttpContext.Current.Response.Redirect("/user/Default.aspx");
+                HttpContext.Current.Response.Redirect("/log-in.aspx");
             }
 
         }

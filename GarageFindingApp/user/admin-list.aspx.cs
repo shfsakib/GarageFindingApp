@@ -87,6 +87,11 @@ namespace GarageFindingApp.user
                     baseClass.PopAlert(this, "Admin inactivate successfully");
                     LoadAdmin();
                 }
+                else
+                {
+                    baseClass.PopAlert(this, "Admin inactivate successfully");
+                    LoadAdmin();
+                }
             }
             else
             {
@@ -108,6 +113,11 @@ namespace GarageFindingApp.user
                   "<h1>Hello User,</h1><br/>Your account has been activate by an Admin.<br/><b>Thank you</b>",
                   "carservice12345");
                 if (ans2)
+                {
+                    baseClass.PopAlert(this, "Admin inactivate successfully");
+                    LoadAdmin();
+                }
+                else
                 {
                     baseClass.PopAlert(this, "Admin inactivate successfully");
                     LoadAdmin();

@@ -48,6 +48,31 @@ namespace GarageFindingApp.user
             }
 
             baseClass.LoadGrid(gridService, $"SELECT * FROM SERVICE WHERE GarageId='{Request.QueryString["id"].ToString()}' ORDER BY SERVICENAME ASC");
+            baseClass.LoadGrid(gridRating, $"SELECT * FROM Rating WHERE GarageId='{Request.QueryString["id"].ToString()}' ORDER BY RateId DESC");
+        }
+
+        protected void gridService_OnPageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gridService.PageIndex = e.NewPageIndex;
+            LoadProfile();
+        }
+
+        protected void gridRating_OnPageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gridRating.PageIndex = e.NewPageIndex;
+            LoadProfile();
+        }
+
+        public string Review(string review)
+        {
+            if (review=="")
+            {
+                return "No Review";
+            }
+            else
+            {
+                return review;
+            }
         }
     }
 }

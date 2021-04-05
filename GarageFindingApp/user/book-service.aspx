@@ -21,7 +21,7 @@
             <div class="col-md-2"></div>
             <div class="col-md-2">Garage Name : </div>
             <div class="col-md-6">
-                <input type="text" runat="server" readonly="readonly" class="form-control wd" autocomplete="off" placeholder="Garage Name" id="txtGarageName" />
+                <input type="text" runat="server" readonly="readonly" class="form-control mt2" autocomplete="off" placeholder="Garage Name" id="txtGarageName" />
             </div>
             <div class="col-md-2"></div>
         </div>
@@ -29,7 +29,7 @@
             <div class="col-md-2"></div>
             <div class="col-md-2">Booking Date : </div>
             <div class="col-md-6">
-                <input type="text" runat="server" class="form-control wd dateJ" autocomplete="off" placeholder="dd/mm/yyyy" id="txtDate" />
+                <input type="text" runat="server" class="form-control mt2 dateJ" autocomplete="off" placeholder="dd/mm/yyyy" id="txtDate" />
             </div>
             <div class="col-md-2"></div>
         </div>
@@ -37,7 +37,7 @@
             <div class="col-md-2"></div>
             <div class="col-md-2">Booking Time : </div>
             <div class="col-md-6">
-                <input type="time" runat="server" class="form-control wd" autocomplete="off" placeholder="HH:MM tt" id="txtTime" />
+                <input type="time" runat="server" class="form-control mt2" autocomplete="off" placeholder="HH:MM tt" id="txtTime" />
             </div>
             <div class="col-md-2"></div>
         </div>
@@ -45,7 +45,7 @@
             <div class="col-md-2"></div>
             <div class="col-md-2">Bkash No. (Last 6 digits only) : </div>
             <div class="col-md-6">
-                <input type="text" runat="server" class="form-control wd" maxlength="6" autocomplete="off" placeholder="XXXXXX" id="txtBkashNo" />
+                <input type="text" runat="server" class="form-control mt2" maxlength="6" autocomplete="off" placeholder="XXXXXX" id="txtBkashNo" />
             </div>
             <div class="col-md-2"></div>
         </div>
@@ -53,7 +53,7 @@
             <div class="col-md-2"></div>
             <div class="col-md-2">Transaction No. : </div>
             <div class="col-md-6">
-                <input type="text" runat="server" class="form-control wd" autocomplete="off" placeholder="XXXXXXXXXX" id="txtTransNo" />
+                <input type="text" runat="server" class="form-control mt2" autocomplete="off" placeholder="XXXXXXXXXX" id="txtTransNo" />
             </div>
             <div class="col-md-2"></div>
         </div>
@@ -61,7 +61,7 @@
             <div class="col-md-2"></div>
             <div class="col-md-2">Amount :</div>
             <div class="col-md-6">
-                <input type="text" runat="server" class="form-control wd" autocomplete="off" placeholder="XXXX" id="txtAmount" />
+                <input type="text" runat="server" class="form-control mt2" autocomplete="off" placeholder="XXXX" id="txtAmount" />
             </div>
             <div class="col-md-2"></div>
         </div>
@@ -77,7 +77,7 @@
             <div class="col-md-2"></div>
             <div class="col-md-2"></div>
             <div class="col-md-6">
-                <asp:Button ID="btnBook" class="btn btn-success wd" OnClick="btnBook_OnClick" Width="100%" runat="server" Text="Book Now" />
+                <asp:Button ID="btnBook" class="btn btn-success mt2" OnClick="btnBook_OnClick" Width="100%" runat="server" Text="Book Now" />
             </div>
             <div class="col-md-2"></div>
         </div>

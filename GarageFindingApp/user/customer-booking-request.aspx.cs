@@ -157,7 +157,10 @@ FROM            BookService INNER JOIN
                         Load();
                     }
                     else
-                        baseClass.PopAlert(this, "Failed to sent email");
+                    {
+                        Load(); baseClass.PopAlert(this, "Failed to sent email");
+                    }
+
                 }
                 else
                     baseClass.PopAlert(this, "Failed to sent email");
@@ -197,7 +200,11 @@ FROM            BookService INNER JOIN
                         Load();
                     }
                     else
+                    {
+                        Load();
                         baseClass.PopAlert(this, "Failed to sent email");
+                    }
+                        
                 }
                 else
                     baseClass.PopAlert(this, "Failed to sent email");

@@ -130,11 +130,13 @@
     <Content Include="user\add-service.aspx" />
     <Content Include="user\add-location.aspx" />
     <Content Include="user\admin-list.aspx" />
+    <Content Include="user\all-user-charge-list.aspx" />
     <Content Include="user\book-service.aspx" />
     <Content Include="user\create-admin.aspx" />
     <Content Include="user\customer-booking-request.aspx" />
     <Content Include="user\customer-list.aspx" />
     <Content Include="user\garage-list.aspx" />
+    <Content Include="user\monthly-charge-list.aspx" />
     <Content Include="user\monthly-charge.aspx" />
     <Content Include="user\own-profile.aspx" />
     <Content Include="user\profile.aspx" />
@@ -358,11 +360,13 @@
     <Compile Include="DAL\Gateway\AdminGateway.cs" />
     <Compile Include="DAL\Gateway\BookServiceGateway.cs" />
     <Compile Include="DAL\Gateway\LocationGateway.cs" />
+    <Compile Include="DAL\Gateway\MonthlyChargeGateway.cs" />
     <Compile Include="DAL\Gateway\RatingGateway.cs" />
     <Compile Include="DAL\Gateway\ServiceGateway.cs" />
     <Compile Include="DAL\Gateway\UserListGateway.cs" />
     <Compile Include="DAL\Model\AdminModel.cs" />
     <Compile Include="DAL\Model\BookServiceModel.cs" />
+    <Compile Include="DAL\Model\MonthlyChargeModel.cs" />
     <Compile Include="DAL\Model\LocationModel.cs" />
     <Compile Include="DAL\Model\RatingModel.cs" />
     <Compile Include="DAL\Model\ServiceModel.cs" />
@@ -402,6 +406,13 @@
     </Compile>
     <Compile Include="user\admin-list.aspx.designer.cs">
       <DependentUpon>admin-list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\all-user-charge-list.aspx.cs">
+      <DependentUpon>all-user-charge-list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\all-user-charge-list.aspx.designer.cs">
+      <DependentUpon>all-user-charge-list.aspx</DependentUpon>
     </Compile>
     <Compile Include="user\book-service.aspx.cs">
       <DependentUpon>book-service.aspx</DependentUpon>
@@ -444,6 +455,13 @@
     </Compile>
     <Compile Include="user\garage-list.aspx.designer.cs">
       <DependentUpon>garage-list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\monthly-charge-list.aspx.cs">
+      <DependentUpon>monthly-charge-list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\monthly-charge-list.aspx.designer.cs">
+      <DependentUpon>monthly-charge-list.aspx</DependentUpon>
     </Compile>
     <Compile Include="user\monthly-charge.aspx.cs">
       <DependentUpon>monthly-charge.aspx</DependentUpon>

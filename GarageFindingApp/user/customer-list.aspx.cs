@@ -124,6 +124,11 @@ FROM            Upazila INNER JOIN
                     baseClass.PopAlert(this, "User activate successfully");
                     Load();
                 }
+                else
+                {
+                    baseClass.PopAlert(this, "User activate successfully");
+                    Load();
+                }
 
             }
             else

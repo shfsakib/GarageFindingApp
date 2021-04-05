@@ -35,7 +35,7 @@ namespace GarageFindingApp.user
         private void Load()
         {
             string query =
-                @"SELECT        UserList.UserId, UserList.Name, UserList.Email, UserList.MobileNo, UserList.UserType, UserList.Gender, UserList.Dob, UserList.GarageName, UserList.District DistrictId, UserList.Thana ThanaId, UserList.Location LocationId, UserList.Address, 
+                @"SELECT    DISTINCT    UserList.UserId, UserList.Name, UserList.Email, UserList.MobileNo, UserList.UserType, UserList.Gender, UserList.Dob, UserList.GarageName, UserList.District DistrictId, UserList.Thana ThanaId, UserList.Location LocationId, UserList.Address, 
                          UserList.Password, UserList.Picture, UserList.Status, UserList.Intime, UserList.Lat, UserList.Long, (SELECT SUM(Rating.Rate)/COUNT(Rating.Rate) FROM Rating WHERE Rating.GarageId=UserList.UserId) AS Rate, Upazila.Thana AS Thana, Location.LocationName, District.District AS DistrictName
 FROM           UserList  INNER JOIN
                          Upazila ON UserList.Thana = Upazila.Id INNER JOIN
@@ -112,7 +112,7 @@ FROM           UserList  INNER JOIN
         {
             if (ddlThana.Text != "--THANA--" && ddlLocation.Text != "--LOCATION--" && txtSearch.Text != "")
             {
-                baseClass.LoadGrid(gridGarage, $@"SELECT        UserList.UserId, UserList.Name, UserList.Email, UserList.MobileNo, UserList.UserType, UserList.Gender, UserList.Dob, UserList.GarageName, UserList.District DistrictId, UserList.Thana ThanaId, UserList.Location LocationId, UserList.Address, 
+                baseClass.LoadGrid(gridGarage, $@"SELECT    DISTINCT    UserList.UserId, UserList.Name, UserList.Email, UserList.MobileNo, UserList.UserType, UserList.Gender, UserList.Dob, UserList.GarageName, UserList.District DistrictId, UserList.Thana ThanaId, UserList.Location LocationId, UserList.Address, 
                          UserList.Password, UserList.Picture, UserList.Status, UserList.Intime, UserList.Lat, UserList.Long, (SELECT SUM(Rating.Rate)/COUNT(Rating.Rate) FROM Rating WHERE Rating.GarageId=UserList.UserId) AS Rate, Upazila.Thana AS Thana, Location.LocationName, District.District AS DistrictName
 FROM           UserList  INNER JOIN
                          Upazila ON UserList.Thana = Upazila.Id INNER JOIN
@@ -122,7 +122,7 @@ FROM           UserList  INNER JOIN
             }
             else if (ddlThana.Text != "--THANA--" && ddlLocation.Text != "--LOCATION--" && txtSearch.Text == "")
             {
-                baseClass.LoadGrid(gridGarage, $@"SELECT        UserList.UserId, UserList.Name, UserList.Email, UserList.MobileNo, UserList.UserType, UserList.Gender, UserList.Dob, UserList.GarageName, UserList.District DistrictId, UserList.Thana ThanaId, UserList.Location LocationId, UserList.Address, 
+                baseClass.LoadGrid(gridGarage, $@"SELECT   DISTINCT     UserList.UserId, UserList.Name, UserList.Email, UserList.MobileNo, UserList.UserType, UserList.Gender, UserList.Dob, UserList.GarageName, UserList.District DistrictId, UserList.Thana ThanaId, UserList.Location LocationId, UserList.Address, 
                          UserList.Password, UserList.Picture, UserList.Status, UserList.Intime, UserList.Lat, UserList.Long, (SELECT SUM(Rating.Rate)/COUNT(Rating.Rate) FROM Rating WHERE Rating.GarageId=UserList.UserId) AS Rate, Upazila.Thana AS Thana, Location.LocationName, District.District AS DistrictName
 FROM           UserList  INNER JOIN
                          Upazila ON UserList.Thana = Upazila.Id INNER JOIN
@@ -133,7 +133,7 @@ FROM           UserList  INNER JOIN
             }
             else if (ddlThana.Text != "--THANA--" && ddlLocation.Text == "--LOCATION--" && txtSearch.Text == "")
             {
-                baseClass.LoadGrid(gridGarage, $@"SELECT        UserList.UserId, UserList.Name, UserList.Email, UserList.MobileNo, UserList.UserType, UserList.Gender, UserList.Dob, UserList.GarageName, UserList.District DistrictId, UserList.Thana ThanaId, UserList.Location LocationId, UserList.Address, 
+                baseClass.LoadGrid(gridGarage, $@"SELECT   DISTINCT     UserList.UserId, UserList.Name, UserList.Email, UserList.MobileNo, UserList.UserType, UserList.Gender, UserList.Dob, UserList.GarageName, UserList.District DistrictId, UserList.Thana ThanaId, UserList.Location LocationId, UserList.Address, 
                          UserList.Password, UserList.Picture, UserList.Status, UserList.Intime, UserList.Lat, UserList.Long, (SELECT SUM(Rating.Rate)/COUNT(Rating.Rate) FROM Rating WHERE Rating.GarageId=UserList.UserId) AS Rate, Upazila.Thana AS Thana, Location.LocationName, District.District AS DistrictName
 FROM           UserList  INNER JOIN
                          Upazila ON UserList.Thana = Upazila.Id INNER JOIN

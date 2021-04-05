@@ -104,6 +104,11 @@ FROM            Upazila INNER JOIN
                     baseClass.PopAlert(this, "User inactivate successfully");
                     Load();
                 }
+                else
+                {
+                    baseClass.PopAlert(this, "User inactivate successfully");
+                    Load();
+                }
 
             }
             else
@@ -126,6 +131,11 @@ FROM            Upazila INNER JOIN
                    "<h1>Hello User,</h1><br/>Your account has been activate by Admin.<br/><b>Thank you</b>",
                    "carservice12345");
                 if (ans1)
+                {
+                    baseClass.PopAlert(this, "User activate successfully");
+                    Load();
+                }
+                else
                 {
                     baseClass.PopAlert(this, "User activate successfully");
                     Load();

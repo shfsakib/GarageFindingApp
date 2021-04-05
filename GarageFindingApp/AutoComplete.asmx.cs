@@ -79,6 +79,28 @@ namespace GarageFindingApp
             return result;
         }
         [WebMethod]
+        public List<string> GetGarageEmail(string txt)
+        {
+            List<string> result = new List<string>();
+            try
+            {
+
+                string query = @"SELECT Email txt FROM UserList WHERE GarageName +' | '+Email +' | '+MobileNo LIKE '%" + txt + "%' AND UserType='Garage'";
+                using (cmd = new SqlCommand(query, conn))
+                {
+                    if (conn.State != System.Data.ConnectionState.Open) conn.Open();
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        result.Add(reader["txt"].ToString().TrimEnd());
+                    }
+                }
+            }
+            catch (Exception ex) { }
+            return result;
+        }
+        [WebMethod]
         public List<string> GetAdmin(string txt)
         {
             List<string> result = new List<string>();

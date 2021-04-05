@@ -36,10 +36,15 @@ namespace GarageFindingApp
                     {
                         Response.Redirect("/user/add-service.aspx");
                     }
-                    else if (cookie["Type"] == "Admin" || cookie["Type"] == "Moderator")
+                    else if (cookie["Type"] == "Admin" || cookie["Type"] == "Super Admin")
                     {
                         Response.Redirect("/User/add-location.aspx");
                     }
+                   
+                }
+                else
+                {
+                    Response.Redirect("/User/Default.aspx");
                 }
                 txtEmail.Focus();
             }
@@ -102,7 +107,7 @@ namespace GarageFindingApp
                     cookie["Mobile"] = baseClass.IsExist($"SELECT MobileNo FROM Admin WHERE Email='{txtEmail.Value}'");
                     cookie.Expires = DateTime.Now.AddDays(30);
                     Response.Cookies.Add(cookie);
-                    if (cookie["Type"] == "Admin" || cookie["Type"] == "Moderator")
+                    if (cookie["Type"] == "Admin" || cookie["Type"] == "Super Admin")
                     {
                         Response.Redirect("/User/add-location.aspx");
                     }
