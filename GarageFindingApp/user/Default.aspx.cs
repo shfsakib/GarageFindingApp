@@ -27,6 +27,12 @@ namespace GarageFindingApp.user
         {
             if (!IsPostBack)
             {
+                if (cookie!=null)
+                {
+                    baseClass.CheckTypeCookie(this, "Customer");
+                }
+                
+
                 Load();
                 baseClass.BindDropDown(ddlThana, "thana", $"SELECT Thana NAME, Id FROM Upazila ORDER BY Name ASC");
             }

@@ -27,6 +27,8 @@ namespace GarageFindingApp.user
         {
             if (!IsPostBack)
             {
+                baseClass.CheckTypeCookie(this, "Garage");
+
                 if (baseClass.TypeCookie() == "Garage")
                 {
                     txtEmail.ReadOnly = true;

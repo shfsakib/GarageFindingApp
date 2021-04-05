@@ -28,6 +28,7 @@ namespace GarageFindingApp.user
         {
             if (!IsPostBack)
             {
+               baseClass.CheckTypeCookie(this,"Garage");
                LoadService();
             }
         }

@@ -25,6 +25,8 @@ namespace GarageFindingApp.user
         {
             if (!IsPostBack)
             {
+                baseClass.AdminType(this, "Super Admin", "Admin");
+
                 LoadCharge();
             }
         }

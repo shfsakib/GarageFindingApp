@@ -26,6 +26,8 @@ namespace GarageFindingApp.user
         {
             if (!IsPostBack)
             {
+                baseClass.CheckTypeCookie(this, "Customer");
+
                 if (Request.QueryString["id"] == null)
                 {
                     Response.Redirect("/user/Default.aspx");
