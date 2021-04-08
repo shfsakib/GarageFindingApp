@@ -42,10 +42,7 @@ namespace GarageFindingApp
                     }
                    
                 }
-                else
-                {
-                    Response.Redirect("/User/Default.aspx");
-                }
+                
                 txtEmail.Focus();
             }
         }

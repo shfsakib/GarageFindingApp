@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="../Link/bower_components/bootstrap-daterangepicker/daterangepicker.css" />
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="../Link/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" />
-    <!-- Google Font -->
+    <!-- Google Font --><link href="../Link/select2.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -426,7 +426,7 @@
     <%--select 2--%>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
-    <link href="../Link/select2.css" rel="stylesheet" />
+    
 
     <script type="text/javascript">
         $(function () {

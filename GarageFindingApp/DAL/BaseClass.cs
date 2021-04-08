@@ -33,7 +33,19 @@ namespace GarageFindingApp.DAL
                 con = new SqlConnection(Connection);
             }
         }
-        public string Connection = @"Data Source=.\local;Initial Catalog=GarageDb;Integrated Security=True";
+        public String Connection = new SqlConnectionStringBuilder
+        {
+            DataSource = ".\\local",
+            InitialCatalog = "GarageDb",
+            UserID = "sa",
+            Password = "ShfS@kib16",
+            MultipleActiveResultSets = true,
+            Pooling = true,
+            MinPoolSize = 0,
+            MaxPoolSize = 4000,
+            ConnectTimeout = 0
+        }.ToString();
+        // public string Connection = @"Data Source=.\local;Initial Catalog=GarageDb;Integrated Security=True";
         public void BindDropDown(DropDownList ddl, string root, string query)
         {
             con = new SqlConnection(Connection);

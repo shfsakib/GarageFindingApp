@@ -142,6 +142,7 @@
     <Content Include="user\profile.aspx" />
     <Content Include="user\rate-garage.aspx" />
     <Content Include="user\root.Master" />
+    <None Include="Properties\PublishProfiles\GarageApp.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
