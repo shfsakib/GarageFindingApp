@@ -35,7 +35,7 @@ namespace GarageFindingApp.user
             baseClass.LoadGrid(gridCharge, $@"SELECT        MonthlyCharge.ChargeId, MonthlyCharge.GarageId, MonthlyCharge.Month, MonthlyCharge.BkashNo, MonthlyCharge.TransactionNo, MonthlyCharge.Amount, MonthlyCharge.PaymentTime, MonthlyCharge.Status, UserList.Email, 
                          UserList.GarageName
 FROM            MonthlyCharge INNER JOIN
-                         UserList ON MonthlyCharge.GarageId = UserList.UserId WHERE MonthlyCharge.Status='{ddlStatus.SelectedValue}' AND MonthlyCharge.GarageId='{baseClass.UserIdCookie()}'");
+                         UserList ON MonthlyCharge.GarageId = UserList.UserId WHERE MonthlyCharge.Status='{ddlStatus.SelectedValue}'  ");
         }
         protected void ddlStatus_OnSelectedIndexChanged(object sender, EventArgs e)
         {
@@ -49,7 +49,7 @@ FROM            MonthlyCharge INNER JOIN
                 baseClass.LoadGrid(gridCharge, $@"SELECT        MonthlyCharge.ChargeId, MonthlyCharge.GarageId, MonthlyCharge.Month, MonthlyCharge.BkashNo, MonthlyCharge.TransactionNo, MonthlyCharge.Amount, MonthlyCharge.PaymentTime, MonthlyCharge.Status, UserList.Email, 
                          UserList.GarageName
 FROM            MonthlyCharge INNER JOIN
-                         UserList ON MonthlyCharge.GarageId = UserList.UserId WHERE MonthlyCharge.Status='{ddlStatus.SelectedValue}' AND MonthlyCharge.Month='{txtSearch.Text}' AND MonthlyCharge.GarageId='{baseClass.UserIdCookie()}'");
+                         UserList ON MonthlyCharge.GarageId = UserList.UserId WHERE MonthlyCharge.Status='{ddlStatus.SelectedValue}' AND MonthlyCharge.Month='{txtSearch.Text}' ");
             }
         }
         protected void gridCharge_OnPageIndexChanging(object sender, GridViewPageEventArgs e)
