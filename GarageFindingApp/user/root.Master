@@ -397,6 +397,10 @@
                 dateFormat: 'dd/mm/yy',
                 yearRange: '1901:2099'
             });
+            window.history.pushState(null, "", window.location.href);
+            window.onpopstate = function () {
+                window.history.pushState(null, "", window.location.href);
+            };
         });
         function pageLoad() {
             $("#ContentPlaceHolder1_txtDob").datepicker({
