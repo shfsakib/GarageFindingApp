@@ -98,7 +98,7 @@ namespace GarageFindingApp
                     HttpContext.Current.Response.Cookies.Add(cookie);
                     cookie["Name"] = baseClass.IsExist($"SELECT Name FROM Admin WHERE Email='{txtEmail.Value}'");
                     cookie["Type"] = baseClass.IsExist($"SELECT Type FROM Admin WHERE Email='{txtEmail.Value}'");
-                    cookie["UserId"] = baseClass.IsExist($"SELECT AdminId FROM Admin WHERE Email='{txtEmail.Value}'");
+                    cookie["UserId"] = baseClass.IsExist($"SELECT Id FROM Admin WHERE Email='{txtEmail.Value}'");
                     cookie["Email"] = baseClass.IsExist($"SELECT Email FROM Admin WHERE Email='{txtEmail.Value}'");
                     cookie["Picture"] = baseClass.IsExist($"SELECT Picture FROM Admin WHERE Email='{txtEmail.Value}'");
                     cookie["Mobile"] = baseClass.IsExist($"SELECT MobileNo FROM Admin WHERE Email='{txtEmail.Value}'");

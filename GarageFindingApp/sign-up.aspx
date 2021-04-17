@@ -130,8 +130,8 @@
                     </div>
                     <asp:Label ID="lblMsg" runat="server" Text=""></asp:Label>
                     <div class="input-group mb-3">
-                        Profile Picture 
-                         <asp:FileUpload ID="fileImage" onchange="ImagePreview(this)" accept=".png,.jpg,.jpeg" runat="server" />
+                        Profile Picture
+                         <asp:FileUpload ID="fileImage" CssClass="col-12" onchange="ImagePreview(this)" accept=".png,.jpg,.jpeg" runat="server" />
                     </div>
                     <div class="input-group mb-3">
                         <asp:Image ID="imgUser" Width="125px" Height="125px" Style="border: 2px solid black; border-radius: 10px;" ImageUrl="Link/user.png" runat="server" />

@@ -30,7 +30,7 @@ namespace GarageFindingApp.user
 
         private void LoadProfile()
         {
-            profileImage.ImageUrl =
+           profileImage.ImageUrl =
                 baseClass.IsExist($"Select Picture FROM UserList WHERE UserId='{Request.QueryString["id"].ToString()}'");
             nameLabel.Text =
                 baseClass.IsExist($"Select Name FROM UserList WHERE UserId='{Request.QueryString["id"].ToString()}'");

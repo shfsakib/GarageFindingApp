@@ -135,8 +135,8 @@ ORDER BY Location.Id DESC");
             {
                 DropDownList ddlThanaFooter = (DropDownList)e.Row.FindControl("ddlThanaFooter");
                 DropDownList ddlThana = (DropDownList)e.Row.FindControl("ddlThana");
-                baseClass.BindDropDown(ddlThanaFooter, "Thana", @"SELECT Thana NAME, ID FROM upazila ORDER BY NAME ASC");
-                baseClass.BindDropDown(ddlThana, "Thana", @"SELECT Thana NAME, ID FROM upazila ORDER BY NAME ASC");
+                baseClass.BindDropDown(ddlThanaFooter, "Thana", @"SELECT DISTINCT Thana NAME, ID FROM upazila ORDER BY NAME ASC");
+                baseClass.BindDropDown(ddlThana, "Thana", @"SELECT DISTINCT Thana NAME, ID FROM upazila ORDER BY NAME ASC");
 
             }
             if (e.Row.RowType == DataControlRowType.DataRow)

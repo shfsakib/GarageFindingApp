@@ -88,5 +88,36 @@ namespace GarageFindingApp.DAL.Gateway
             }
             return result;
         }
+        internal bool UpdateProfile(AdminModel ob)
+        {
+            bool result = false;
+            SqlTransaction transaction = null;
+            try
+            {
+                if (con.State != ConnectionState.Open)
+                    con.Open();
+                transaction = con.BeginTransaction();
+                cmd = new SqlCommand("UPDATE Admin SET Name=@Name,MobileNo=@MobileNo,Gender=@Gender,Dob=@Dob,Picture=@Picture,Password=@Password WHERE Email=@Email", con);
+                cmd.Parameters.AddWithValue("@Name", ob.Name);
+                cmd.Parameters.AddWithValue("@MobileNo", ob.MobileNo);
+                cmd.Parameters.AddWithValue("@Gender", ob.Gender);
+                cmd.Parameters.AddWithValue("@Dob", ob.Dob);
+                cmd.Parameters.AddWithValue("@Picture", ob.Picture);
+                cmd.Parameters.AddWithValue("@Password", ob.Password);
+                cmd.Parameters.AddWithValue("@Email", ob.Email);
+
+                cmd.Transaction = transaction;
+                cmd.ExecuteNonQuery();
+                transaction.Commit();
+                result = true;
+                if (con.State != ConnectionState.Closed)
+                    con.Close();
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+            }
+            return result;
+        }
     }
 }

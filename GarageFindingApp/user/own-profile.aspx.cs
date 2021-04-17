@@ -15,12 +15,15 @@ namespace GarageFindingApp.user
         private BaseClass baseClass;
         private UserListModel userListModel;
         private UserListGateway userListGateway;
-
+        private AdminModel adminModel;
+        private AdminGateway adminGateway;
         public own_profile()
         {
             baseClass = BaseClass.GetInstance();
             userListModel = UserListModel.GetInstance();
             userListGateway = UserListGateway.GetInstance();
+            adminModel=AdminModel.GetInstance();
+            adminGateway=AdminGateway.GetInstance();
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -35,48 +38,6 @@ namespace GarageFindingApp.user
         }
         private void LoadProfile()
         {
-            profileImage.ImageUrl =
-                    baseClass.IsExist($"SELECT Picture FROM UserList WHERE UserId='{baseClass.UserIdCookie()}'");
-            ;
-            nameLabel.Text = txtName.Text =
-                    baseClass.IsExist($"SELECT Name FROM UserList WHERE UserId='{baseClass.UserIdCookie()}'");
-
-            lblEmail.Text = baseClass.EmailCookie();
-            lblMobile.Text = txtMobile.Text =
-                    baseClass.IsExist($"SELECT MobileNo FROM UserList WHERE UserId='{baseClass.UserIdCookie()}'");
-
-            lblGender.Text =
-                ddlGender.Text =
-                    baseClass.IsExist($"SELECT Gender FROM UserList WHERE UserId='{baseClass.UserIdCookie()}'");
-
-            lblDob.Text = txtDob.Text =
-                    baseClass.IsExist($"SELECT Dob FROM UserList WHERE UserId='{baseClass.UserIdCookie()}'");
-            lblGarageName.Text = txtGarageName.Text =
-                    baseClass.IsExist($"SELECT GarageName FROM UserList WHERE UserId='{baseClass.UserIdCookie()}'");
-            baseClass.BindDropDown(ddlDistrict, "District", "SELECT District NAME, Id FROM District ORDER BY NAME ASC");
-            baseClass.BindDropDown(ddlThana, "Thana", "SELECT Thana NAME, Id FROM Upazila ORDER BY NAME ASC");
-            baseClass.BindDropDown(ddlLocation, "Location", "SELECT  LocationName NAME, Id FROM Location ORDER BY NAME ASC");
-            lbldistrict.Text =
-                    baseClass.IsExist($@"SELECT     DISTINCT   District.District
-FROM            District INNER JOIN
-                         UserList ON District.Id = UserList.District WHERE UserId='{baseClass.UserIdCookie()}'");
-            string district =
-                baseClass.IsExist($"SELECT District FROM UserList WHERE UserId='{baseClass.UserIdCookie()}'");
-            ddlDistrict.SelectedValue = district;
-            lblThana.Text =
-                  baseClass.IsExist($@"SELECT     DISTINCT   Upazila.Thana
-FROM            Upazila INNER JOIN
-                         UserList ON Upazila.Id = UserList.Thana WHERE UserId='{baseClass.UserIdCookie()}'");
-            ddlThana.SelectedValue = baseClass.IsExist($@"SELECT Thana FROM UserList WHERE UserId='{baseClass.UserIdCookie()}'");
-            lblLocation.Text = baseClass.IsExist($@"SELECT     DISTINCT  Location.LocationName
-FROM            Location INNER JOIN
-                         UserList ON Location.Id = UserList.Location WHERE UserId='{baseClass.UserIdCookie()}'");
-            ddlLocation.SelectedValue = baseClass.IsExist($@"SELECT Location FROM UserList WHERE UserId='{baseClass.UserIdCookie()}'");
-            lblAddress.Text = txtAddress.Text =
-                    baseClass.IsExist($"SELECT Address FROM UserList WHERE UserId='{baseClass.UserIdCookie()}'");
-            txtPass.Text = baseClass.IsExist($"SELECT Password FROM UserList WHERE UserId='{baseClass.UserIdCookie()}'");
-
-
             string type = baseClass.TypeCookie();
             if (type == "Garage")
             {
@@ -90,7 +51,71 @@ FROM            Location INNER JOIN
             {
                 gridService.Visible = lblService.Visible = garageDiv.Visible = false;
             }
+            if (baseClass.TypeCookie() == "Customer" || baseClass.TypeCookie() == "Garage")
+            {
+                profileImage.ImageUrl =
+                   baseClass.IsExist($"SELECT Picture FROM UserList WHERE UserId='{baseClass.UserIdCookie()}'");
+                ;
+                nameLabel.Text = txtName.Text =
+                        baseClass.IsExist($"SELECT Name FROM UserList WHERE UserId='{baseClass.UserIdCookie()}'");
 
+                lblEmail.Text = baseClass.EmailCookie();
+                lblMobile.Text = txtMobile.Text =
+                        baseClass.IsExist($"SELECT MobileNo FROM UserList WHERE UserId='{baseClass.UserIdCookie()}'");
+
+                lblGender.Text =
+                    ddlGender.Text =
+                        baseClass.IsExist($"SELECT Gender FROM UserList WHERE UserId='{baseClass.UserIdCookie()}'");
+
+                lblDob.Text = txtDob.Text =
+                        baseClass.IsExist($"SELECT Dob FROM UserList WHERE UserId='{baseClass.UserIdCookie()}'");
+                lblGarageName.Text = txtGarageName.Text =
+                        baseClass.IsExist($"SELECT GarageName FROM UserList WHERE UserId='{baseClass.UserIdCookie()}'");
+                baseClass.BindDropDown(ddlDistrict, "District", "SELECT District NAME, Id FROM District ORDER BY NAME ASC");
+                baseClass.BindDropDown(ddlThana, "Thana", "SELECT Thana NAME, Id FROM Upazila ORDER BY NAME ASC");
+                baseClass.BindDropDown(ddlLocation, "Location", "SELECT  LocationName NAME, Id FROM Location ORDER BY NAME ASC");
+                lbldistrict.Text =
+                        baseClass.IsExist($@"SELECT     DISTINCT   District.District
+FROM            District INNER JOIN
+                         UserList ON District.Id = UserList.District WHERE UserId='{baseClass.UserIdCookie()}'");
+                string district =
+                    baseClass.IsExist($"SELECT District FROM UserList WHERE UserId='{baseClass.UserIdCookie()}'");
+                ddlDistrict.SelectedValue = district;
+                lblThana.Text =
+                      baseClass.IsExist($@"SELECT     DISTINCT   Upazila.Thana
+FROM            Upazila INNER JOIN
+                         UserList ON Upazila.Id = UserList.Thana WHERE UserId='{baseClass.UserIdCookie()}'");
+                ddlThana.SelectedValue = baseClass.IsExist($@"SELECT Thana FROM UserList WHERE UserId='{baseClass.UserIdCookie()}'");
+                lblLocation.Text = baseClass.IsExist($@"SELECT     DISTINCT  Location.LocationName
+FROM            Location INNER JOIN
+                         UserList ON Location.Id = UserList.Location WHERE UserId='{baseClass.UserIdCookie()}'");
+                ddlLocation.SelectedValue = baseClass.IsExist($@"SELECT Location FROM UserList WHERE UserId='{baseClass.UserIdCookie()}'");
+                lblAddress.Text = txtAddress.Text =
+                        baseClass.IsExist($"SELECT Address FROM UserList WHERE UserId='{baseClass.UserIdCookie()}'");
+                txtPass.Text = baseClass.IsExist($"SELECT Password FROM UserList WHERE UserId='{baseClass.UserIdCookie()}'");
+
+
+               
+            }
+            else
+            {
+                profileImage.ImageUrl =
+                  baseClass.IsExist($"SELECT Picture FROM Admin WHERE Id='{baseClass.UserIdCookie()}'");
+                nameLabel.Text = txtName.Text =
+                        baseClass.IsExist($"SELECT Name FROM Admin WHERE Id='{baseClass.UserIdCookie()}'");
+                lblMobile.Text = txtMobile.Text =
+                       baseClass.IsExist($"SELECT MobileNo FROM Admin WHERE Id='{baseClass.UserIdCookie()}'");
+                lblEmail.Text = baseClass.EmailCookie();
+                lblGender.Text =
+                    ddlGender.Text =
+                        baseClass.IsExist($"SELECT Gender FROM Admin WHERE Id='{baseClass.UserIdCookie()}'");
+
+                lblDob.Text = txtDob.Text =
+                        baseClass.IsExist($"SELECT Dob FROM Admin WHERE Id='{baseClass.UserIdCookie()}'");
+                txtPass.Text = baseClass.IsExist($"SELECT Password FROM Admin WHERE Id='{baseClass.UserIdCookie()}'");
+
+            }
+            
         }
 
         protected void btnEdit_OnServerClick(object sender, EventArgs e)
@@ -123,25 +148,6 @@ FROM            Location INNER JOIN
             {
                 baseClass.PopAlert(this, "Mobile no already exist");
             }
-            else if (ddlDistrict.SelectedItem.ToString() == "--DISTRICT--")
-            {
-                baseClass.PopAlert(this, "District is required");
-
-            }
-            else if (ddlThana.SelectedItem.ToString() == "--THANA--")
-            {
-                baseClass.PopAlert(this, "Thana is required");
-
-            }
-            else if (ddlLocation.SelectedItem.ToString() == "--LOCATION--")
-            {
-                baseClass.PopAlert(this, "Location is required");
-            }
-            else if (txtAddress.Text == "")
-            {
-                baseClass.PopAlert(this, "Address is required");
-
-            }
             else if (txtPass.Text == "")
             {
                 baseClass.PopAlert(this, "Password is required");
@@ -157,6 +163,25 @@ FROM            Location INNER JOIN
                 {
                     baseClass.PopAlert(this, "Date of Birth is required");
                 }
+                else if (ddlDistrict.SelectedItem.ToString() == "--DISTRICT--")
+                {
+                    baseClass.PopAlert(this, "District is required");
+
+                }
+                else if (ddlThana.SelectedItem.ToString() == "--THANA--")
+                {
+                    baseClass.PopAlert(this, "Thana is required");
+
+                }
+                else if (ddlLocation.SelectedItem.ToString() == "--LOCATION--")
+                {
+                    baseClass.PopAlert(this, "Location is required");
+                }
+                else if (txtAddress.Text == "")
+                {
+                    baseClass.PopAlert(this, "Address is required");
+
+                }
                 else
                 {
                     SaveUser();
@@ -169,10 +194,33 @@ FROM            Location INNER JOIN
                 {
                     baseClass.PopAlert(this, "Garage name is required");
                 }
+                else if (ddlDistrict.SelectedItem.ToString() == "--DISTRICT--")
+                {
+                    baseClass.PopAlert(this, "District is required");
+
+                }
+                else if (ddlThana.SelectedItem.ToString() == "--THANA--")
+                {
+                    baseClass.PopAlert(this, "Thana is required");
+
+                }
+                else if (ddlLocation.SelectedItem.ToString() == "--LOCATION--")
+                {
+                    baseClass.PopAlert(this, "Location is required");
+                }
+                else if (txtAddress.Text == "")
+                {
+                    baseClass.PopAlert(this, "Address is required");
+
+                }
                 else
                 {
                     SaveUser();
                 }
+            }
+            else
+            {
+                UpdateAdmin();
             }
         }
         private void SaveUser()
@@ -214,6 +262,36 @@ FROM            Location INNER JOIN
 
         }
 
+        private void UpdateAdmin()
+        {
+            adminModel.Email = baseClass.EmailCookie();
+            adminModel.Name = txtName.Text;
+            adminModel.MobileNo = txtMobile.Text;
+            adminModel.Gender = ddlGender.Text;
+            adminModel.Dob = txtDob.Text;
+            adminModel.Password = txtPass.Text;
+            if (fileProfile.HasFile)
+            {
+                string imagePath = Server.MapPath("/Photos/") + "admin" + fileProfile.FileName;
+                fileProfile.PostedFile.SaveAs(imagePath);
+                adminModel.Picture = "/Photos/" + "admin" + fileProfile.FileName;
+            }
+            else
+            {
+                adminModel.Picture = baseClass.PictureCookie();
+            }
+            bool ans = adminGateway.UpdateProfile(adminModel);
+            if (ans)
+            {
+                baseClass.PopAlert(this, "Updated successfully");
+                VisibleElements(true, false);
+                LoadProfile();
+            }
+            else
+            {
+                baseClass.PopAlert(this, "Update failed");
+            }
+        }
         private void VisibleElements(bool first, bool second)
         {
             fileProfile.Visible = txtName.Visible = txtMobile.Visible = ddlGender.Visible = txtDob.Visible = txtGarageName.Visible = ddlDistrict.Visible = ddlThana.Visible = ddlLocation.Visible = txtAddress.Visible = txtPass.Visible = lnkUpdate.Visible = second;
