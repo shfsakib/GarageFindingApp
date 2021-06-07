@@ -45,6 +45,7 @@
                                                 <asp:Label runat="server" ID="lblName" Text='<%#Eval("Name")%>'></asp:Label>
                                                 <h3 class=""><a id="anchorName" style="text-decoration: none;" runat="server" href='<%#"/user/profile.aspx?id="+Eval("UserId")%>'></a><span style="color: olive; font-size: 20px; font-weight: bold;"><%#" "+" "+Star(Eval("Rate").ToString())%></span></h3>
                                                 <p class="mp"><i class="fa fa-map-marker text-success" title="Location"></i><%#" "+Eval("Address")+","+Eval("LocationName")+","+Eval("Thana")+","+Eval("DistrictName") %></p>
+                                                <p class="mp"><i class="fas fa-star-of-david text-primary" title="Experience"></i><%#" "+Exp(Eval("Experience").ToString())%></p>                                                
                                                 <p class="mp"><i class="far fa-envelope text-primary" title="Location"></i><%#" "+Eval("Email")%></p>
                                                 <p class="mp"><i class="fas fa-phone-alt text-primary" title="Location"></i><%#" "+Eval("MobileNo")%></p>
                                                 <p class="mp font-20 text-success">

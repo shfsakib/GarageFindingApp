@@ -69,6 +69,14 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="input-group mb-3">
+                            <input type="number" min="0" class="form-control" id="txtExp" autocomplete="off" runat="server" placeholder="Experience" />
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-sort-numeric-up-alt"></span>
+                                </div>
+                            </div>
+                        </div>
                     </asp:Panel>
                     <asp:Panel ID="Customer" runat="server" Visible="False">
                         <div class="input-group mb-3">

@@ -26,12 +26,12 @@ namespace GarageFindingApp.user
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-            {  
-                if (cookie!=null)
+            {
+                if (cookie != null)
                 {
                     baseClass.CheckTypeCookie(this, "Customer");
                 }
-                
+
 
                 Load();
                 baseClass.BindDropDown(ddlThana, "thana", $"SELECT Thana NAME, Id FROM Upazila ORDER BY Name ASC");
@@ -41,7 +41,7 @@ namespace GarageFindingApp.user
         private void Load()
         {
             string query =
-                @"SELECT    DISTINCT    UserList.UserId, UserList.Name, UserList.Email, UserList.MobileNo, UserList.UserType, UserList.Gender, UserList.Dob, UserList.GarageName, UserList.District DistrictId, UserList.Thana ThanaId, UserList.Location LocationId, UserList.Address, 
+                @"SELECT    DISTINCT    UserList.UserId, UserList.Name, UserList.Email, UserList.MobileNo,UserList.Experience, UserList.UserType, UserList.Gender, UserList.Dob, UserList.GarageName, UserList.District DistrictId, UserList.Thana ThanaId, UserList.Location LocationId, UserList.Address, 
                          UserList.Password, UserList.Picture, UserList.Status, UserList.Intime, UserList.Lat, UserList.Long, (SELECT SUM(Rating.Rate)/COUNT(Rating.Rate) FROM Rating WHERE Rating.GarageId=UserList.UserId) AS Rate, Upazila.Thana AS Thana, Location.LocationName, District.District AS DistrictName
 FROM           UserList  INNER JOIN
                          Upazila ON UserList.Thana = Upazila.Id INNER JOIN
@@ -82,21 +82,21 @@ FROM           UserList  INNER JOIN
 
         protected void lnkBook_OnClick(object sender, EventArgs e)
         {
-            if (cookie==null)
+            if (cookie == null)
             {
-                baseClass.PopAlert(this,"Please log in first to book service");
+                baseClass.PopAlert(this, "Please log in first to book service");
             }
             else
             {
-                LinkButton linkButton = (LinkButton) sender;
-                HiddenField userId = (HiddenField) linkButton.Parent.FindControl("userId");
-                Response.Redirect("/user/book-service.aspx?id="+userId.Value);
+                LinkButton linkButton = (LinkButton)sender;
+                HiddenField userId = (HiddenField)linkButton.Parent.FindControl("userId");
+                Response.Redirect("/user/book-service.aspx?id=" + userId.Value);
 
             }
 
         }
 
-       
+
         protected void gridGarage_OnRowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -118,7 +118,7 @@ FROM           UserList  INNER JOIN
         {
             if (ddlThana.Text != "--THANA--" && ddlLocation.Text != "--LOCATION--" && txtSearch.Text != "")
             {
-                baseClass.LoadGrid(gridGarage, $@"SELECT    DISTINCT    UserList.UserId, UserList.Name, UserList.Email, UserList.MobileNo, UserList.UserType, UserList.Gender, UserList.Dob, UserList.GarageName, UserList.District DistrictId, UserList.Thana ThanaId, UserList.Location LocationId, UserList.Address, 
+                baseClass.LoadGrid(gridGarage, $@"SELECT    DISTINCT    UserList.UserId, UserList.Name,UserList.Experience, UserList.Email, UserList.MobileNo, UserList.UserType, UserList.Gender, UserList.Dob, UserList.GarageName, UserList.District DistrictId, UserList.Thana ThanaId, UserList.Location LocationId, UserList.Address, 
                          UserList.Password, UserList.Picture, UserList.Status, UserList.Intime, UserList.Lat, UserList.Long, (SELECT SUM(Rating.Rate)/COUNT(Rating.Rate) FROM Rating WHERE Rating.GarageId=UserList.UserId) AS Rate, Upazila.Thana AS Thana, Location.LocationName, District.District AS DistrictName
 FROM           UserList  INNER JOIN
                          Upazila ON UserList.Thana = Upazila.Id INNER JOIN
@@ -128,7 +128,7 @@ FROM           UserList  INNER JOIN
             }
             else if (ddlThana.Text != "--THANA--" && ddlLocation.Text != "--LOCATION--" && txtSearch.Text == "")
             {
-                baseClass.LoadGrid(gridGarage, $@"SELECT   DISTINCT     UserList.UserId, UserList.Name, UserList.Email, UserList.MobileNo, UserList.UserType, UserList.Gender, UserList.Dob, UserList.GarageName, UserList.District DistrictId, UserList.Thana ThanaId, UserList.Location LocationId, UserList.Address, 
+                baseClass.LoadGrid(gridGarage, $@"SELECT   DISTINCT     UserList.UserId, UserList.Name,UserList.Experience, UserList.Email, UserList.MobileNo, UserList.UserType, UserList.Gender, UserList.Dob, UserList.GarageName, UserList.District DistrictId, UserList.Thana ThanaId, UserList.Location LocationId, UserList.Address, 
                          UserList.Password, UserList.Picture, UserList.Status, UserList.Intime, UserList.Lat, UserList.Long, (SELECT SUM(Rating.Rate)/COUNT(Rating.Rate) FROM Rating WHERE Rating.GarageId=UserList.UserId) AS Rate, Upazila.Thana AS Thana, Location.LocationName, District.District AS DistrictName
 FROM           UserList  INNER JOIN
                          Upazila ON UserList.Thana = Upazila.Id INNER JOIN
@@ -139,7 +139,7 @@ FROM           UserList  INNER JOIN
             }
             else if (ddlThana.Text != "--THANA--" && ddlLocation.Text == "--LOCATION--" && txtSearch.Text == "")
             {
-                baseClass.LoadGrid(gridGarage, $@"SELECT   DISTINCT     UserList.UserId, UserList.Name, UserList.Email, UserList.MobileNo, UserList.UserType, UserList.Gender, UserList.Dob, UserList.GarageName, UserList.District DistrictId, UserList.Thana ThanaId, UserList.Location LocationId, UserList.Address, 
+                baseClass.LoadGrid(gridGarage, $@"SELECT   DISTINCT     UserList.UserId, UserList.Name,UserList.Experience, UserList.Email, UserList.MobileNo, UserList.UserType, UserList.Gender, UserList.Dob, UserList.GarageName, UserList.District DistrictId, UserList.Thana ThanaId, UserList.Location LocationId, UserList.Address, 
                          UserList.Password, UserList.Picture, UserList.Status, UserList.Intime, UserList.Lat, UserList.Long, (SELECT SUM(Rating.Rate)/COUNT(Rating.Rate) FROM Rating WHERE Rating.GarageId=UserList.UserId) AS Rate, Upazila.Thana AS Thana, Location.LocationName, District.District AS DistrictName
 FROM           UserList  INNER JOIN
                          Upazila ON UserList.Thana = Upazila.Id INNER JOIN
@@ -151,6 +151,20 @@ FROM           UserList  INNER JOIN
             {
                 Load();
             }
+        }
+
+        public string Exp(string exp)
+        {
+            if (exp == "" || exp=="0")
+            {
+                exp = "No Experience";
+            }
+            else
+            {
+                exp = exp+ " years";
+            }
+            return exp;
+
         }
     }
 }

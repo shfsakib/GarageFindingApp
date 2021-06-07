@@ -179,6 +179,7 @@ namespace GarageFindingApp
             userListModel.Gender = ddlGender.Text;
             userListModel.Dob = txtDob.Value;
             userListModel.GarageName = txtGarageName.Value;
+            userListModel.Experience = txtExp.Value;
             userListModel.District = Convert.ToInt32(ddlDistrict.SelectedValue);
             userListModel.Thana = Convert.ToInt32(ddlThana.SelectedValue);
             userListModel.Location = Convert.ToInt32(ddlLocation.SelectedValue);

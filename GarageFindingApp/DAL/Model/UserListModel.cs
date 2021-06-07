@@ -25,6 +25,7 @@ namespace GarageFindingApp.DAL.Model
         public string Gender { get; set; }
         public string Dob { get; set; }
         public string GarageName { get; set; }
+        public string Experience { get; set; }
         public int District { get; set; }
         public int Thana { get; set; }
         public int Location { get; set; }
