@@ -101,7 +101,6 @@ namespace GarageFindingApp
                 else if (ddltype.Text == "--User Type--")
                 {
                     baseClass.PopAlert(this, "User type is required");
-
                 }
 
                 else if (ddlDistrict.SelectedItem.ToString() == "--DISTRICT--")
@@ -153,6 +152,10 @@ namespace GarageFindingApp
                     if (txtGarageName.Value == "")
                     {
                         baseClass.PopAlert(this, "Garage name is required");
+                    }
+                    if (txtExp.Value == "")
+                    {
+                        baseClass.PopAlert(this, "Experience is required");
                     }
                     else
                     {
